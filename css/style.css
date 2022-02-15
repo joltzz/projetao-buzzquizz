@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+    /* Header */
+header {
+    width: 100%;
+    height: 69px;
+    background-color: #EC362D;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+}
+header h1 {
+    font-family: 'Roboto';
+    font-size: 37px;
+    line-height: 43px;
+    color: #ffffff;
+}
+
+    /* body*/
+body {
+    padding-top: 100px;
+}
+
+    /* Menu de Criar Quizz */
+.menuCriarQuizz {
+    width: 91%;
+    height: 181px;
+    background: #FAFAFA;
+    border: 1px dashed #D5D5D5;
+    box-sizing: border-box;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+}
+.menuCriarQuizz h3 {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    color: #B9B9B9;
+    text-align: center;
+}
+.menuCriarQuizz button {
+    background-color: #fafafa;
+    color: #EC362D;
+    font-family: 'Roboto';
+    border: 1px dashed #EC362D;
+    border-radius: 50px;
+}
+
+    /* Icone do Menu */
+.iconeAdicionar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.iconeAdicionar ion-icon {
+    color: #EC362D;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+}
+
+    /* Quizzes Prontos na API */
+.quizzes {
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 35px;
+    width: 91%;
+}
+
+.quizzes h2{
+    text-align: left;
+}
+
+.quizz {
+    margin-top: 14px;
+    position: relative;
+    width: 100%;
+    height: 181px;
+    border-radius: 5px;
+    background-color: orange;
+}
+.quizz p {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 19px;
+    color: #ffffff;
+    position: absolute;
+    bottom: 5px;
+    padding: 20px;
+}
+
+
+    /* Organização da Main */
+main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+    /* Quizes ja criados pelo usuario */
+.quizzesCriados {
+    width: 91%;
+}
+.quizzesCriados h2 {
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 7px;
+    width: 91%;
+}
+
+
+    /* Tela 3 Criação do quizz */
+.fundoCriarQuizz {
+    background-color: #FAFAFA;
+}
+
+.infosQuizz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.infosQuizz h1{
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+.menuInput {
+    display: flex;
+    flex-direction: column;
+    width:100vw;
+    height: 256px;
+    align-items: center;
+    background-color: #FFFFFF;
+}
+.menuInput input {
+    display: flex;
+    width: 91%;
+    height: 46px;
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
+    color: #BABABA;
+    margin-top: 14.5px;
+}
+.prosseguirPerguntas {
+    margin-top: 29px;
+    width: 360px;
+    height: 54px;
+    border: 0;
+    background-color: #EC362D;
+    color: #ffffff;
+    border-radius: 15px;
+    font-family: 'Roboto';
+    font-size: 18px;
+    color: #FFF5F4;
+}
+
+
+    /* Teclas para esconder */
+.esconder {
+    display: none;
+}
