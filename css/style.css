@@ -273,6 +273,10 @@ main {
 
 
 /* Estilos da tela "Página de um .quizz" */
+.pagina-de-um-quizz{
+    padding-bottom: 70px;
+}
+
 .pagina-de-um-quizz__titulo-de-um-quizz {
     width: 100%;
     height: 142px;
@@ -288,12 +292,6 @@ main {
     color: #ffffff;
 }
 
-.pagina-de-um-quizz__perguntas {
-    width: 100%;
-    color: #434CA0;
-    padding-top: 12px;
-}
-
 .box-de-cada-pergunta{
     background-color: #FFFFFF;
     width: 375px;
@@ -301,11 +299,17 @@ main {
     margin: 12px auto;
 }
 
+.pagina-de-um-quizz__perguntas {
+    width: 100%;
+    color: #434CA0;
+    padding-top: 12px;
+}
+
 .box-de-cada-pergunta__a-pergunta {
     background-color: #434CA0;
     width: 100%;
     margin: 0px auto 15px auto;
-    padding: 30px;
+    padding: 30px 16px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -316,6 +320,7 @@ main {
     font-weight: 700;
     font-size: 19px;
     color: #FFFFFF;
+    text-align: center;
 }
 
 .box-de-cada-pergunta__as-opcoes {
@@ -325,7 +330,56 @@ main {
     gap: 12px;
 }
 
+.resultado-final{
+    background-color: #FFFFFF;
+    width: 375px;
+    padding: 18px;
+    margin: 12px auto;
+}
 
+.resultado-final__porcentagem{
+    background-color: #EC362D;
+    width: 100%;
+    margin: 0px auto 15px auto;
+    padding: 30px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.resultado-final__porcentagem h4 {
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 19px;
+    color: #FFFFFF;
+    text-align: center;
+    }
+
+.resultado-final__imagem-e-parabenizacao p{
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.pagina-de-um-quizz .reiniciar{
+    width: 221px;
+    height: 44px;
+    background-color: #EC362D;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 15px;
+    margin-top: 30px;
+}
+
+.pagina-de-um-quizz .voltar{
+    width: 221px;
+    height: 44px;
+    background-color: #FAFAFA;
+    color:#818181;
+    border: none;
+    border-radius: 15px;
+    margin-top: 5px;
+}
 
 
 /* Teclas para esconder */
