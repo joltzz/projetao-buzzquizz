@@ -32,7 +32,7 @@ body {
 }
 
 /* Menu de Criar Quizz */
-.menuCriarQuizz {
+.menu-criar-Quizz {
     width: 91%;
     height: 181px;
     background: #FAFAFA;
@@ -45,7 +45,7 @@ body {
     align-items: center;
 }
 
-.menuCriarQuizz h3 {
+.menu-criar-Quizz h3 {
     font-family: 'Roboto';
     font-weight: 400;
     font-size: 20px;
@@ -54,7 +54,7 @@ body {
     text-align: center;
 }
 
-.menuCriarQuizz button {
+.menu-criar-Quizz button {
     background-color: #fafafa;
     color: #EC362D;
     font-family: 'Roboto';
@@ -63,13 +63,13 @@ body {
 }
 
 /* Icone do Menu */
-.iconeAdicionar {
+.icone-adicionar {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.iconeAdicionar ion-icon {
+.icone-adicionar ion-icon {
     color: #EC362D;
     width: 30px;
     height: 30px;
@@ -119,11 +119,11 @@ main {
 }
 
 /* Quizes ja criados pelo usuario */
-.quizzesCriados {
+.quizzes-criados {
     width: 91%;
 }
 
-.quizzesCriados h2 {
+.quizzes-criados h2 {
     font-family: 'Roboto';
     font-weight: bold;
     font-size: 20px;
@@ -185,7 +185,7 @@ main {
     text-align: start;
 }
 
-.adicionaPergunta {
+.adiciona-pergunta {
     width: 100vw;
     height: 74px;
     margin-top: 27px;
@@ -193,13 +193,13 @@ main {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
 }
 
-.adicionarPergunta {
+.adicionar-pergunta {
     display: flex;
     justify-content: space-between;
     padding: 24px;
 }
 
-.adicionarPergunta p {
+.adicionar-pergunta p {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     font-weight: bold;
@@ -226,7 +226,7 @@ main {
 }
 
 /* Tela Finalizar quizz  */
-.quizzPronto {
+.quizz-Pronto {
     width: 91%;
     background-color: orange;
     height: 181px;
@@ -234,7 +234,7 @@ main {
     border-radius: 5px;
 }
 
-.quizzPronto p {
+.quizz-Pronto p {
     width: 91%;
     font-family: 'Roboto', sans-serif;
     font-size: 19px;
@@ -244,14 +244,14 @@ main {
     color: #ffffff;
 }
 
-.finalizarQuizz h1 {
+.finalizar-Quizz h1 {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 29px;
 }
 
-.finalizarQuizz button {
+.finalizar-Quizz button {
     width: 324px;
     height: 44px;
     background: #EC362D;
@@ -263,7 +263,7 @@ main {
     font-size: 18px;
 }
 
-.finalizarQuizz h2 {
+.finalizar-Quizz h2 {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
     line-height: 21px;
