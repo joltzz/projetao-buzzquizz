@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-    /* Header */
+/* Header */
 header {
     width: 100%;
     height: 69px;
@@ -17,6 +17,7 @@ header {
     top: 0;
     z-index: 10;
 }
+
 header h1 {
     font-family: 'Roboto';
     font-size: 37px;
@@ -24,13 +25,13 @@ header h1 {
     color: #ffffff;
 }
 
-    /* body*/
+/* body*/
 body {
     background-color: #FAFAFA;
-    padding-top: 100px;
+    padding-top: 69px;
 }
 
-    /* Menu de Criar Quizz */
+/* Menu de Criar Quizz */
 .menuCriarQuizz {
     width: 91%;
     height: 181px;
@@ -43,6 +44,7 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
 .menuCriarQuizz h3 {
     font-family: 'Roboto';
     font-weight: 400;
@@ -51,6 +53,7 @@ body {
     color: #B9B9B9;
     text-align: center;
 }
+
 .menuCriarQuizz button {
     background-color: #fafafa;
     color: #EC362D;
@@ -59,12 +62,13 @@ body {
     border-radius: 50px;
 }
 
-    /* Icone do Menu */
-.iconeAdicionar{
+/* Icone do Menu */
+.iconeAdicionar {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .iconeAdicionar ion-icon {
     color: #EC362D;
     width: 30px;
@@ -73,7 +77,7 @@ body {
     min-height: 30px;
 }
 
-    /* Quizzes Prontos na API */
+/* Quizzes Prontos na API */
 .quizzes {
     font-family: 'Roboto';
     font-weight: bold;
@@ -82,7 +86,7 @@ body {
     width: 91%;
 }
 
-.quizzes h2{
+.quizzes h2 {
     text-align: left;
 }
 
@@ -94,6 +98,7 @@ body {
     border-radius: 5px;
     background-color: orange;
 }
+
 .quizz p {
     font-family: 'Roboto';
     font-weight: 400;
@@ -105,7 +110,7 @@ body {
 }
 
 
-    /* Organização da Main */
+/* Organização da Main */
 main {
     display: flex;
     justify-content: center;
@@ -113,20 +118,21 @@ main {
     align-items: center;
 }
 
-    /* Quizes ja criados pelo usuario */
+/* Quizes ja criados pelo usuario */
 .quizzesCriados {
     width: 91%;
 }
+
 .quizzesCriados h2 {
     font-family: 'Roboto';
     font-weight: bold;
     font-size: 20px;
-    margin-top: 7px;
+    margin-top: 38px;
     width: 91%;
 }
 
-    /* Criação de quizz */
-.criacao-de-quiz{
+/* Criação de quizz */
+.criacao-de-quiz {
     width: 100vw;
     margin: 10px 0;
     display: flex;
@@ -135,20 +141,20 @@ main {
     font-family: 'Roboto', sans-serif;
 }
 
-.criacao-de-quiz h1{
+.criacao-de-quiz h1 {
     width: 100%;
     padding-bottom: 29px;
     font-weight: bold;
     font-size: 20px;
 }
 
-.criacao-de-quiz .inputs{
+.criacao-de-quiz .inputs {
     background-color: #ffffff;
     padding: 21px 18px 24px 18px;
-    
+
 }
 
-.criacao-de-quiz input{
+.criacao-de-quiz input {
     width: 100%;
     height: 46px;
     background: #FFFFFF;
@@ -162,7 +168,7 @@ main {
     padding-left: 13px;
 }
 
-.criacao-de-quiz button{
+.criacao-de-quiz button {
     width: 324px;
     height: 54px;
     background: #EC362D;
@@ -174,10 +180,11 @@ main {
     font-size: 18px;
 }
 
-    /* Tela das perguntas */
-.pergunta{
+/* Tela das perguntas */
+.pergunta {
     text-align: start;
 }
+
 .adicionaPergunta {
     width: 100vw;
     height: 74px;
@@ -185,54 +192,40 @@ main {
     background: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
 }
+
 .adicionarPergunta {
     display: flex;
     justify-content: space-between;
     padding: 24px;
 }
-.adicionarPergunta p{
-    font-family: 'Roboto',sans-serif;
+
+.adicionarPergunta p {
+    font-family: 'Roboto', sans-serif;
     font-size: 20px;
     font-weight: bold;
 }
 
-    /* Tela dos niveis */
-.descInput{
-    height: 177px;
-    position: relative;
-    text-align: end;
-}
-
-
-<<<<<<< HEAD
-.descInput::placeholder { 
-    text-align:left;
-    position: absolute;
-    top: 10px;
-    left: 12px;
-    
-} 
-
-.area-de-texto{
+/* Tela dos niveis */
+.area-de-texto {
     height: 177px;
     width: 100%;
     resize: none;
-    font-family: 'Roboto',sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-style: italic;
     font-size: 20px;
     position: relative;
     padding: 10px;
+    border-radius: 5px;
 }
 
-.area-de-texto::placeholder{
+.area-de-texto::placeholder {
     position: absolute;
     top: 10px;
     left: 10px;
     font-size: 20px;
 }
 
-=======
-    /* Tela Finalizar quizz  */
+/* Tela Finalizar quizz  */
 .quizzPronto {
     width: 91%;
     background-color: orange;
@@ -240,22 +233,25 @@ main {
     position: relative;
     border-radius: 5px;
 }
-.quizzPronto p{
+
+.quizzPronto p {
     width: 91%;
-    font-family: 'Roboto',sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 19px;
     position: absolute;
     bottom: 5px;
     padding: 20px;
     color: #ffffff;
 }
+
 .finalizarQuizz h1 {
-    font-family: 'Roboto',sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 29px;
 }
-.finalizarQuizz button{
+
+.finalizarQuizz button {
     width: 324px;
     height: 44px;
     background: #EC362D;
@@ -266,8 +262,9 @@ main {
     font-weight: normal;
     font-size: 18px;
 }
-.finalizarQuizz h2{
-    font-family: 'Roboto',sans-serif;
+
+.finalizarQuizz h2 {
+    font-family: 'Roboto', sans-serif;
     font-size: 18px;
     line-height: 21px;
     margin-top: 15px;
@@ -275,10 +272,63 @@ main {
 }
 
 
+/* Estilos da tela "Página de um .quizz" */
+.pagina-de-um-quizz__titulo-de-um-quizz {
+    width: 100%;
+    height: 142px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #B9B9B9;
+}
+
+.pagina-de-um-quizz__titulo-de-um-quizz p {
+    font-family: Roboto;
+    font-size: 19px;
+    color: #ffffff;
+}
+
+.pagina-de-um-quizz__perguntas {
+    width: 100%;
+    color: #434CA0;
+    padding-top: 12px;
+}
+
+.box-de-cada-pergunta{
+    background-color: #FFFFFF;
+    width: 375px;
+    padding: 18px;
+    margin: 12px auto;
+}
+
+.box-de-cada-pergunta__a-pergunta {
+    background-color: #434CA0;
+    width: 100%;
+    margin: 0px auto 15px auto;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-de-cada-pergunta__a-pergunta h4 {
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 19px;
+    color: #FFFFFF;
+}
+
+.box-de-cada-pergunta__as-opcoes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
 
 
->>>>>>> f76c18b539b1730f4b15c2af18fb03a8b412006e
-    /* Teclas para esconder */
+
+
+/* Teclas para esconder */
 .esconder {
     display: none;
 }
