@@ -200,6 +200,51 @@ main {
 .descInput input::placeholder { text-align:start} 
 
 
+    /* Tela Finalizar quizz  */
+.quizzPronto {
+    width: 91%;
+    background-color: orange;
+    height: 181px;
+    position: relative;
+    border-radius: 5px;
+}
+.quizzPronto p{
+    width: 91%;
+    font-family: 'Roboto',sans-serif;
+    font-size: 19px;
+    position: absolute;
+    bottom: 5px;
+    padding: 20px;
+    color: #ffffff;
+}
+.finalizarQuizz h1 {
+    font-family: 'Roboto',sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 29px;
+}
+.finalizarQuizz button{
+    width: 324px;
+    height: 44px;
+    background: #EC362D;
+    border: none;
+    border-radius: 15px;
+    margin-top: 25px;
+    color: #FFF5F4;
+    font-weight: normal;
+    font-size: 18px;
+}
+.finalizarQuizz h2{
+    font-family: 'Roboto',sans-serif;
+    font-size: 18px;
+    line-height: 21px;
+    margin-top: 15px;
+    color: #818181;
+}
+
+
+
+
     /* Teclas para esconder */
 .esconder {
     display: none;
