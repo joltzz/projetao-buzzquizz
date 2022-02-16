@@ -1,4 +1,7 @@
 document.querySelector(".quizzes-criados ion-icon").onclick = function () { chamarTelaCriarQuizz() }
+document.querySelector("#pergunta2 img").onclick=function(){ adicionaPergunta2() }
+document.querySelector("#pergunta3 img").onclick=function(){ adicionaPergunta3() }
+
 function chamarTelaCriarQuizz() {
     let telaUmPontoUM = document.querySelector("#tela1_1");
     let telaUmPontoDoin = document.querySelector("#tela1_2");
@@ -29,6 +32,54 @@ function chamarTelaDecidirNiveis(){
 
 document.querySelector("#nivel2").onclick = function(){adicionarnivel()};
 document.querySelector("#nivel3").onclick = function(){adicionarnivel()};
+
+function adicionaPergunta2(){
+    let adicionaPergunta=document.querySelector("#pergunta2");
+    adicionaPergunta.innerHTML=""
+    adicionaPergunta.innerHTML+=`
+        <div class="inputs">
+                <article class="pergunta">
+                    <h1>Pergunta 2</h1>
+                    <input type="text" placeholder="Texto da pergunta">
+                    <input type="text" placeholder="Cor de fundo da pergunta">
+
+                    <h1 style="margin-top: 28px;">Resposta correta</h1>
+                    <input type="text" placeholder="Resposta correta">
+                    <input type="text" placeholder="URL da imagem">
+
+                    <h1 style="margin-top: 28px;">Respostas incorretas</h1>
+                    <input type="text" placeholder="Resposta incorreta 1">
+                    <input type="text" placeholder="URL da imagem 1">
+                    <input type="text" placeholder="Resposta incorreta 2">
+                    <input type="text" placeholder="URL da imagem 2">
+                    <input type="text" placeholder="Resposta incorreta 3">
+                    <input type="text" placeholder="URL da imagem 3">
+                </article>
+            </div>`}
+
+function adicionaPergunta3(){
+    let adicionaPergunta=document.querySelector("#pergunta3");
+    adicionaPergunta.innerHTML=""
+    adicionaPergunta.innerHTML+=`
+        <div class="inputs">
+                <article class="pergunta">
+                    <h1>Pergunta 3</h1>
+                    <input type="text" placeholder="Texto da pergunta">
+                    <input type="text" placeholder="Cor de fundo da pergunta">
+
+                    <h1 style="margin-top: 28px;">Resposta correta</h1>
+                    <input type="text" placeholder="Resposta correta">
+                    <input type="text" placeholder="URL da imagem">
+
+                    <h1 style="margin-top: 28px;">Respostas incorretas</h1>
+                    <input type="text" placeholder="Resposta incorreta 1">
+                    <input type="text" placeholder="URL da imagem 1">
+                    <input type="text" placeholder="Resposta incorreta 2">
+                    <input type="text" placeholder="URL da imagem 2">
+                    <input type="text" placeholder="Resposta incorreta 3">
+                    <input type="text" placeholder="URL da imagem 3">
+                </article>
+            </div>`}
 
 function adicionarnivel(){
     console.log("a funcao esta sendo chamada")
