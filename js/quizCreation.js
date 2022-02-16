@@ -9,7 +9,7 @@ function chamarTelaCriarQuizz() {
     telasTresPontoUmETresPontoDois.classList.toggle("esconder");
 }
 
-document.querySelector(".info-basica button").onclick = function () { chamarTelaPerguntasDoQuiz() }
+document.querySelector("#tela3_1-2 .info-basica button").onclick = function () { chamarTelaPerguntasDoQuiz() }
 function chamarTelaPerguntasDoQuiz() {
     let telaCriacaoPerguntas = document.querySelector(".criacao-perguntas");
     let telaCriacaoComecePeloComeco = document.querySelector(".info-basica");
@@ -19,7 +19,7 @@ function chamarTelaPerguntasDoQuiz() {
 }
 
 document.querySelector(".criacao-perguntas button").onclick = function () { chamarTelaDecidirNiveis() }
-function chamarTelaDecidirNiveis(){
+function chamarTelaDecidirNiveis() {
     let teladecidirNiveis = document.querySelector("#tela3_3");
     let telaCriacaoPerguntas = document.querySelector(".criacao-perguntas");
 
@@ -27,21 +27,29 @@ function chamarTelaDecidirNiveis(){
     telaCriacaoPerguntas.classList.toggle("esconder");
 }
 
-document.querySelector("#nivel2").onclick = function(){adicionarnivel()};
-document.querySelector("#nivel3").onclick = function(){adicionarnivel()};
+document.querySelector("#tela3_3 .info-basica button").onclick = function () { finalizarQuizz() }
+function finalizarQuizz() {
+    let telaSeuQuizzEstaPronto = document.querySelector("#tela3_4");
+    let teladecidirNiveis = document.querySelector("#tela3_3");
+    // Aqui tem que enviar o quizz pro servidor
 
-function adicionarnivel(){
-    console.log("a funcao esta sendo chamada")
-    let conteudo = document.querySelector("#nivel2");
-    console.log(conteudo)
+    telaSeuQuizzEstaPronto.classList.toggle("esconder");
+    teladecidirNiveis.classList.toggle("esconder");
+}
+
+document.querySelector("#nivel2").onclick = function () { adicionarnivel('#nivel2') };
+document.querySelector("#nivel3").onclick = function () { adicionarnivel('#nivel3') };
+
+function adicionarnivel(nivel) {
+    document.querySelector(nivel)
+    let conteudo = document.querySelector(nivel);
     conteudo.innerHTML += `
-    <div class="inputs">
-                <p>Nível 1</p>
-                <input type="text" placeholder="Título do nível">
-                <input type="text" placeholder="% de acerto mínima">
-                <input type="text" placeholder="URL da imagem do nível">
-                <textarea name="" id="" class="area-de-texto" placeholder="Descrição do nível"></textarea>
-            </div>
+        <div class="inputs">
+            <input type="text" placeholder="Título do nível">
+            <input type="text" placeholder="% de acerto mínima">
+            <input type="text" placeholder="URL da imagem do nível">
+            <textarea name="" id="" class="area-de-texto" placeholder="Descrição do nível"></textarea>
+        </div>
     `
-    console.log(conteudo)
+    document.querySelector(nivel).onclick = ""
 }
