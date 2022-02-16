@@ -54,8 +54,8 @@
         </div>
     </main>
 
-    <main class="criacao-de-quiz">
-        <section class="info-basica esconder">
+    <main class="criacao-de-quiz esconder">
+        <section class="info-basica ">
             <h1>Comece pelo começo</h1>
             <div class="inputs">
                 <input type="text" placeholder="Título do seu quizz">
@@ -70,31 +70,40 @@
             <div class="inputs">
                 <article class="pergunta">
                     <h1>Pergunta 1</h1>
-                        <input type="text" placeholder="Texto da pergunta">
-                        <input type="text" placeholder="Cor de fundo da pergunta">
-                    <h1>Resposta correta</h1>
-                        <input type="text" placeholder="Resposta correta">
-                        <input type="text" placeholder="URL da imagem">
-                    <h1>Respostas incorretas</h1>
-                        <input type="text" placeholder="Resposta incorreta 1">
-                        <input type="text" placeholder="URL da imagem 1">
-                        <input type="text" placeholder="Resposta incorreta 2">
-                        <input type="text" placeholder="URL da imagem 2">
-                        <input type="text" placeholder="Resposta incorreta 3">
-                        <input type="text" placeholder="URL da imagem 3">
-                </article>
+                    <input type="text" placeholder="Texto da pergunta">
+                    <input type="text" placeholder="Cor de fundo da pergunta">
 
+                    <h1 style="margin-top: 28px;">Resposta correta</h1>
+                    <input type="text" placeholder="Resposta correta">
+                    <input type="text" placeholder="URL da imagem">
+
+                    <h1 style="margin-top: 28px;">Respostas incorretas</h1>
+                    <input type="text" placeholder="Resposta incorreta 1">
+                    <input type="text" placeholder="URL da imagem 1">
+                    <input type="text" placeholder="Resposta incorreta 2">
+                    <input type="text" placeholder="URL da imagem 2">
+                    <input type="text" placeholder="Resposta incorreta 3">
+                    <input type="text" placeholder="URL da imagem 3">
+                </article>
             </div>
+            <article class="adicionaPergunta">
+                <div class="adicionarPergunta">
+                    <p>Pergunta 2</p>
+                    <img src="./imagens/adicionarNivel.svg">
+                </div>
+            </article>
+            <article class="adicionaPergunta">
+                <div class="adicionarPergunta">
+                    <p>Pergunta 3</p>
+                    <img src="./imagens/adicionarNivel.svg">
+                </div>
+            </article>
             <button>Prosseguir para criar níveis</button>
         </section>
     </main>
 
 
-
-
-
-
-
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="quizList.js"></script>
     <script src="quizCreation.js"></script>
