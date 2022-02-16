@@ -197,8 +197,38 @@ main {
 }
 
     /* Tela dos niveis */
-.descInput input::placeholder { text-align:start} 
+.descInput{
+    height: 177px;
+    position: relative;
+    text-align: end;
+}
 
+
+.descInput::placeholder { 
+    text-align:left;
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    
+} 
+
+.area-de-texto{
+    height: 177px;
+    width: 100%;
+    resize: none;
+    font-family: 'Roboto',sans-serif;
+    font-style: italic;
+    font-size: 20px;
+    position: relative;
+    padding: 10px;
+}
+
+.area-de-texto::placeholder{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+}
 
     /* Teclas para esconder */
 .esconder {
