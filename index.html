@@ -15,9 +15,13 @@
     <header>
         <h1>BuzzQuizz</h1>
     </header>
-    <main class="esconder">
+
+    <!-- Menu de quando o usuario não tiver criado nenhum quizz -->
+    
+
+    <main id="tela1_2" class="">
         <!-- Menu de quando o usuario ja tiver criado algum quizz -->
-        <div class="quizzes-criados esconder">
+        <div class="quizzes-criados ">
             <div class="icone-adicionar">
                 <h2>Seus Quizzes</h2>
                 <ion-icon name="add-circle"></ion-icon>
@@ -34,8 +38,8 @@
         </div>
 
     </main>
-    <!-- Menu de quando o usuario não tiver criado nenhum quizz -->
-    <main class="esconder">
+
+    <main id="tela1_1" class="">
         <div class="menu-criar-Quizz esconder">
             <h3>Você não criou nenhum <br> quizz ainda :( </h3>
             <button> Criar Quizz </button>
@@ -54,91 +58,8 @@
         </div>
     </main>
 
-    <!--Menu de criação das Perguntas com perguntas-->
-    <main id="Tela3.12" class="criacao-de-quiz esconder">
-        <section class="info-basica ">
-            <h1>Comece pelo começo</h1>
-            <div class="inputs">
-                <input type="text" placeholder="Título do seu quizz">
-                <input type="text" placeholder="URL da imagem do seu quizz">
-                <input type="text" placeholder="Quantidade de perguntas do quizz">
-                <input type="text" placeholder="Quantidade de níveis do quizz">
-            </div>
-            <button>Prosseguir para criar perguntas</button>
-        </section>
-        <section class="criacao-perguntas">
-            <h1>Crie suas perguntas</h1>
-            <div class="inputs">
-                <article class="pergunta">
-                    <h1>Pergunta 1</h1>
-                    <input type="text" placeholder="Texto da pergunta">
-                    <input type="text" placeholder="Cor de fundo da pergunta">
-
-                    <h1 style="margin-top: 28px;">Resposta correta</h1>
-                    <input type="text" placeholder="Resposta correta">
-                    <input type="text" placeholder="URL da imagem">
-
-                    <h1 style="margin-top: 28px;">Respostas incorretas</h1>
-                    <input type="text" placeholder="Resposta incorreta 1">
-                    <input type="text" placeholder="URL da imagem 1">
-                    <input type="text" placeholder="Resposta incorreta 2">
-                    <input type="text" placeholder="URL da imagem 2">
-                    <input type="text" placeholder="Resposta incorreta 3">
-                    <input type="text" placeholder="URL da imagem 3">
-                </article>
-            </div>
-            <article class="adiciona-pergunta">
-                <div class="adicionar-pergunta">
-                    <p>Pergunta 2</p>
-                    <img src="./imagens/adicionarNivel.svg">
-                </div>
-            </article>
-            <article class="adiciona-pergunta">
-                <div class="adicionar-pergunta">
-                    <p>Pergunta 3</p>
-                    <img src="./imagens/adicionarNivel.svg">
-                </div>
-            </article>
-            <button>Prosseguir para criar níveis</button>
-        </section>
-    </main>
-
-    <main id="Tela3.3" class="criacao-de-quiz esconder">
-        <section class="info-basica ">
-            <h1>Agora, decida os níveis!</h1>
-            <div class="inputs">
-                <input type="text" placeholder="Título do nível">
-                <input type="text" placeholder="% de acerto mínima">
-                <input type="text" placeholder="URL da imagem do nível">
-                <textarea name="" id="" class="area-de-texto" placeholder="Descrição do nível"></textarea>
-            </div>
-            <article class="adiciona-pergunta">
-                <div class="adicionar-pergunta">
-                    <p>Nível 2</p>
-                    <img src="./imagens/adicionarNivel.svg">
-                </div>
-            </article>
-            <article class="adiciona-pergunta">
-                <div class="adicionar-pergunta">
-                    <p>Nível 3</p>
-                    <img src="./imagens/adicionarNivel.svg">
-                </div>
-            </article>
-            <button>Finalizar Quizz</button>
-    </main>
-
-    <main id="Tela3.4" class="finalizar-Quizz esconder">
-        <h1>Seu quizz está pronto!</h1>
-        <div class="quizz-Pronto">
-            <p>O quão PotterHead é você?</p>
-        </div>
-        <button>Acessar Quizz</button>
-        <h2>Voltar para home</h2>
-
-    </main>
-
     <!--Página de um quizz-->
-    <main class="pagina-de-um-quizz">
+    <main id="tela2" class="pagina-de-um-quizz esconder">
         <div class="pagina-de-um-quizz__titulo-de-um-quizz">
             <p>O quão PotterHead você é?</p>
         </div>
@@ -246,6 +167,91 @@
             Voltar para home
         </button>
     </main>
+
+    <!--Menu de criação das Perguntas com perguntas-->
+    <main id="tela3_1-2" class="criacao-de-quiz esconder">
+        <section class="info-basica ">
+            <h1>Comece pelo começo</h1>
+            <div class="inputs">
+                <input type="text" placeholder="Título do seu quizz">
+                <input type="text" placeholder="URL da imagem do seu quizz">
+                <input type="text" placeholder="Quantidade de perguntas do quizz">
+                <input type="text" placeholder="Quantidade de níveis do quizz">
+            </div>
+            <button>Prosseguir para criar perguntas</button>
+        </section>
+        <section class="criacao-perguntas">
+            <h1>Crie suas perguntas</h1>
+            <div class="inputs">
+                <article class="pergunta">
+                    <h1>Pergunta 1</h1>
+                    <input type="text" placeholder="Texto da pergunta">
+                    <input type="text" placeholder="Cor de fundo da pergunta">
+
+                    <h1 style="margin-top: 28px;">Resposta correta</h1>
+                    <input type="text" placeholder="Resposta correta">
+                    <input type="text" placeholder="URL da imagem">
+
+                    <h1 style="margin-top: 28px;">Respostas incorretas</h1>
+                    <input type="text" placeholder="Resposta incorreta 1">
+                    <input type="text" placeholder="URL da imagem 1">
+                    <input type="text" placeholder="Resposta incorreta 2">
+                    <input type="text" placeholder="URL da imagem 2">
+                    <input type="text" placeholder="Resposta incorreta 3">
+                    <input type="text" placeholder="URL da imagem 3">
+                </article>
+            </div>
+            <article class="adiciona-pergunta">
+                <div class="adicionar-pergunta">
+                    <p>Pergunta 2</p>
+                    <img src="./imagens/adicionarNivel.svg">
+                </div>
+            </article>
+            <article class="adiciona-pergunta">
+                <div class="adicionar-pergunta">
+                    <p>Pergunta 3</p>
+                    <img src="./imagens/adicionarNivel.svg">
+                </div>
+            </article>
+            <button>Prosseguir para criar níveis</button>
+        </section>
+    </main>
+
+    <main id="tela3_3" class="criacao-de-quiz esconder">
+        <section class="info-basica ">
+            <h1>Agora, decida os níveis!</h1>
+            <div class="inputs">
+                <input type="text" placeholder="Título do nível">
+                <input type="text" placeholder="% de acerto mínima">
+                <input type="text" placeholder="URL da imagem do nível">
+                <textarea name="" id="" class="area-de-texto" placeholder="Descrição do nível"></textarea>
+            </div>
+            <article class="adiciona-pergunta">
+                <div class="adicionar-pergunta">
+                    <p>Nível 2</p>
+                    <img src="./imagens/adicionarNivel.svg">
+                </div>
+            </article>
+            <article class="adiciona-pergunta">
+                <div class="adicionar-pergunta">
+                    <p>Nível 3</p>
+                    <img src="./imagens/adicionarNivel.svg">
+                </div>
+            </article>
+            <button>Finalizar Quizz</button>
+    </main>
+
+    <main id="tela3_4" class="finalizar-Quizz esconder">
+        <h1>Seu quizz está pronto!</h1>
+        <div class="quizz-Pronto">
+            <p>O quão PotterHead é você?</p>
+        </div>
+        <button>Acessar Quizz</button>
+        <h2>Voltar para home</h2>
+
+    </main>
+
+    
 
 
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
