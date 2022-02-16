@@ -35,7 +35,7 @@
 
     </main>
     <!-- Menu de quando o usuario não tiver criado nenhum quizz -->
-    <main id="Pagina-Inicial" class="esconder">
+    <main class="esconder">
         <div class="menuCriarQuizz esconder">
             <h3>Você não criou nenhum <br> quizz ainda :( </h3>
             <button> Criar Quizz </button>
@@ -54,19 +54,43 @@
         </div>
     </main>
 
-        <!-- Menu de criação de quizz -->
-    <main class="criarQuizz">
-        <div class="infosQuizz">
+    <main class="criacao-de-quiz">
+        <section class="info-basica esconder">
             <h1>Comece pelo começo</h1>
-            <div class="menuInput">
+            <div class="inputs">
                 <input type="text" placeholder="Título do seu quizz">
                 <input type="text" placeholder="URL da imagem do seu quizz">
                 <input type="text" placeholder="Quantidade de perguntas do quizz">
                 <input type="text" placeholder="Quantidade de níveis do quizz">
             </div>
-            <button class="prosseguirPerguntas">Prosseguir pra criar perguntas</button>
-        </div>
+            <button>Prosseguir para criar perguntas</button>
+        </section>
+        <section class="criacao-perguntas">
+            <h1>Crie suas perguntas</h1>
+            <div class="inputs">
+                <article class="pergunta">
+                    <h1>Pergunta 1</h1>
+                        <input type="text" placeholder="Texto da pergunta">
+                        <input type="text" placeholder="Cor de fundo da pergunta">
+                    <h1>Resposta correta</h1>
+                        <input type="text" placeholder="Resposta correta">
+                        <input type="text" placeholder="URL da imagem">
+                    <h1>Respostas incorretas</h1>
+                        <input type="text" placeholder="Resposta incorreta 1">
+                        <input type="text" placeholder="URL da imagem 1">
+                        <input type="text" placeholder="Resposta incorreta 2">
+                        <input type="text" placeholder="URL da imagem 2">
+                        <input type="text" placeholder="Resposta incorreta 3">
+                        <input type="text" placeholder="URL da imagem 3">
+                </article>
+
+            </div>
+            <button>Prosseguir para criar níveis</button>
+        </section>
     </main>
+
+
+
 
 
 
