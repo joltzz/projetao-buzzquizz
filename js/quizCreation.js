@@ -90,8 +90,8 @@ function renderizarCriacaoPerguntas() {
         perguntasHTML.innerHTML += `
         <article class="adiciona-pergunta" >
             <div class="adicionar-pergunta">
-                <p>Pergunta ${i + 1}</p>
-                <img src="./imagens/adicionarNivel.svg" onclick="editarPergunta(this)">
+                <p>Pergunta ${i + 1}</p>               
+                <img src="./imagens/adicionarNivel.svg" onclick="editarPergunta(this)">               
             </div>
             <div class="esconder">
                 <input id="textoPergunta${i + 1}" type="text" placeholder="Texto da pergunta">
@@ -172,7 +172,7 @@ function finalizarCriacaoQuizz() {
 
 //Verficação caso queira adicionar uma nova pergunta, além das 3
 function editarPergunta(perguntaSelecionada) {
-    perguntaSelecionada.parentNode.parentNode.querySelector("div:last-child").classList.add("pergunta-selecionada pergunta-atual")
+    perguntaSelecionada.parentNode.querySelector("div:last-child").classList.add("pergunta-selecionada")
     document.querySelectorAll(".criacao-perguntas article>div:last-child").forEach((elemento) => {
         if (elemento.classList.contains("pergunta-selecionada") && !elemento.classList.contains("pergunta-atual")) {
             elemento.classList.toggle("esconder");
@@ -180,4 +180,3 @@ function editarPergunta(perguntaSelecionada) {
         }
     })
 }
-
