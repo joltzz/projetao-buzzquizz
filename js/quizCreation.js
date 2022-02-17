@@ -103,7 +103,7 @@ function renderizarCriacaoPerguntas() {
                 <input id="urlRespostaIncorreta11" type="text" placeholder="URL da imagem 1">
                 <input id="respostaIncorreta21" type="text" placeholder="Resposta incorreta 2">
                 <input id="urlRespostaIncorreta21" type="text" placeholder="URL da imagem 2">
-                <input id="respostaIncorreta21" type="text" placeholder="Resposta incorreta 3">
+                <input id="respostaIncorreta31" type="text" placeholder="Resposta incorreta 3">
                 <input id="urlRespostaIncorreta31" type="text" placeholder="URL da imagem 3">
             </div>
         </article>
