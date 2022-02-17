@@ -19,7 +19,7 @@
     <!-- Menu de quando o usuario não tiver criado nenhum quizz -->
 
 
-    <main id="tela1_2" class="">
+    <main id="tela1_2" class="esconder">
         <!-- Menu de quando o usuario ja tiver criado algum quizz -->
         <div class="quizzes-criados ">
             <div class="icone-adicionar">
@@ -40,7 +40,7 @@
     </main>
 
     <main id="tela1_1" class="">
-        <div class="menu-criar-Quizz esconder">
+        <div class="menu-criar-Quizz">
             <h3>Você não criou nenhum <br> quizz ainda :( </h3>
             <button> Criar Quizz </button>
         </div>
@@ -169,8 +169,8 @@
     </main>
 
     <!--Menu de criação das Perguntas com perguntas-->
-    <main id="tela3_1-2" class="criacao-de-quiz esconder">
-        <section class="info-basica ">
+    <main id="tela3_1-2" class="criacao-de-quizz esconder">
+        <section class="info-basica">
             <h1>Comece pelo começo</h1>
             <div class="inputs">
                 <input type="text" placeholder="Título do seu quizz">
@@ -180,6 +180,7 @@
             </div>
             <button>Prosseguir para criar perguntas</button>
         </section>
+
         <section class="criacao-perguntas esconder">
             <h1>Crie suas perguntas</h1>
             <div class="inputs">
@@ -221,7 +222,7 @@
         </section>
     </main>
 
-    <main id="tela3_3" class="criacao-de-quiz esconder">
+    <main id="tela3_3" class="criacao-de-quizz esconder">
         <section class="info-nivel">
             <h1>Agora, decida os níveis!</h1>
             <div class="inputs">
@@ -251,8 +252,8 @@
         <div class="quizz-Pronto">
             <p>O quão PotterHead é você?</p>
         </div>
-        <button>Acessar Quizz</button>
-        <h2>Voltar para home</h2>
+        <button class="reiniciar">Acessar Quizz</button>
+        <button class="voltar">Voltar para home</button>
 
     </main>
 

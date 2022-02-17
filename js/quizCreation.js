@@ -1,15 +1,14 @@
 document.querySelector(".quizzes-criados ion-icon").onclick = function () { chamarTelaCriarQuizz() }
-document.querySelector("#pergunta2 img").onclick = function () { adicionaPergunta2() }
-document.querySelector("#pergunta3 img").onclick = function () { adicionaPergunta3() }
+document.querySelector(".menu-criar-Quizz button").onclick = function () { chamarTelaCriarQuizz() }
 
 function chamarTelaCriarQuizz() {
     let telaUmPontoUM = document.querySelector("#tela1_1");
     let telaUmPontoDoin = document.querySelector("#tela1_2");
     let telasTresPontoUmETresPontoDois = document.querySelector("#tela3_1-2");
 
-    telaUmPontoUM.classList.toggle("esconder");
-    telaUmPontoDoin.classList.toggle("esconder");
-    telasTresPontoUmETresPontoDois.classList.toggle("esconder");
+    telaUmPontoUM.classList.add("esconder");
+    telaUmPontoDoin.classList.add("esconder");
+    telasTresPontoUmETresPontoDois.classList.remove("esconder");
 }
 
 document.querySelector(".info-basica button").onclick = function () { chamarTelaPerguntasDoQuiz() }
@@ -23,6 +22,7 @@ function chamarTelaPerguntasDoQuiz() {
 
 document.querySelector(".criacao-perguntas button").onclick = function () { chamarTelaDecidirNiveis() }
 function chamarTelaDecidirNiveis() {
+    console.log("esta chamando a funcao")
     let teladecidirNiveis = document.querySelector("#tela3_3");
     let telaCriacaoPerguntas = document.querySelector(".criacao-perguntas");
 
@@ -34,15 +34,26 @@ document.querySelector(".info-nivel button").onclick = function () { finalizarQu
 function finalizarQuizz() {
     let teladecidirNiveis = document.querySelector("#tela3_3");
     let telaQuizzPronto = document.querySelector(".finalizar-Quizz");
+    //AQUI TEM QUE ENVIAR O QUIZZ PARA O SERVIDOR
 
     telaQuizzPronto.classList.toggle("esconder");
     teladecidirNiveis.classList.toggle("esconder");
 }
 
+document.querySelector("#tela3_4 .voltar").onclick = function () { voltarHome() }
+function voltarHome() {
+    let telaFinalizar = document.querySelector("#tela3_4");
+    let telaVoltarHome = document.querySelector("#tela1_2");
+    //AQUI TEM QUE ENVIAR O QUIZZ PARA O SERVIDOR
+
+    telaFinalizar.classList.toggle("esconder");
+    telaVoltarHome.classList.toggle("esconder");
+}
+
+
 
 document.querySelector("#pergunta2").onclick = function () { adicionarPerguntas("#pergunta2", 2) };
 document.querySelector("#pergunta3").onclick = function () { adicionarPerguntas("#pergunta3", 3) };
-
 function adicionarPerguntas(pergunta, numero) {
     let localAdicionarPergunta = document.querySelector(pergunta);
     localAdicionarPergunta.innerHTML = ""
