@@ -11,9 +11,9 @@ function chamarTelaCriarQuizz() {
     telasTresPontoUmETresPontoDois.classList.remove("esconder");
 }
 
-
 document.querySelector(".criacao-perguntas button").onclick = function () { chamarTelaDecidirNiveis() }
 function chamarTelaDecidirNiveis() {
+    // Antes dess funcao ser executada será necessário a validação da tela anterior
     console.log("esta chamando a funcao")
     let teladecidirNiveis = document.querySelector("#tela3_3");
     let telaCriacaoPerguntas = document.querySelector(".criacao-perguntas");
@@ -67,7 +67,6 @@ function chamarTelaPerguntasDoQuiz() {
 }
 
 
-
 //Verificação das infos necessarias para criar as perguntas
 function criarPerguntasQuizz() {
     if (validarInfoBasica()) {
@@ -80,36 +79,64 @@ function criarPerguntasQuizz() {
 
 
 //Renderizar as perguntas de acordo com a qtd selecionada no HTML
-let qtdPerguntas;
+let qtdPerguntas = 0;
 function renderizarCriacaoPerguntas() {
     qtdPerguntas = parseInt(document.querySelector(".criacao-de-quizz .info-basica .qtd-de-perguntas").value);
-    document.querySelector(".criacao-de-quizz .criacao-perguntas .inputs").innerHTML = '';
+    // document.querySelector(".criacao-de-quizz .criacao-perguntas .inputs").innerHTML = '';
     let perguntasHTML = document.querySelector(".criacao-de-quizz .criacao-perguntas .inputs");
-    //Repetição para criar as perguntas no HTML
-    for (let i = 0; i < qtdPerguntas; i++) {
-        perguntasHTML.innerHTML += `
-        <article class="adiciona-pergunta" >
+    // Primeiro, colocar a quantidade de perguntas
+
+    perguntasHTML.innerHTML += `
+        <article class="adiciona-a-pergunta" >
             <div class="adicionar-pergunta">
-                <p>Pergunta ${i + 1}</p>               
+                <p>Pergunta 1</p>               
                 <img src="./imagens/adicionarNivel.svg" onclick="editarPergunta(this)">               
             </div>
-            <div class="esconder">
-                <input id="textoPergunta${i + 1}" type="text" placeholder="Texto da pergunta">
-                <input id="corPergunta${i + 1}" type="text" placeholder="Cor de fundo da pergunta">
+            <div class="">
+                <input id="textoPergunta1" type="text" placeholder="Texto da pergunta">
+                <input id="corPergunta1" type="text" placeholder="Cor de fundo da pergunta">
                     <h1>Resposta correta</h1>
-                <input id="respostaCorreta${i + 1}" type="text" placeholder="Resposta correta">
-                <input id="urlRespostaCorreta${i + 1}" type="text" placeholder="URL da imagem">
+                <input id="respostaCorreta1" type="text" placeholder="Resposta correta">
+                <input id="urlRespostaCorreta1" type="text" placeholder="URL da imagem">
                     <h1>Respostas incorretas</h1>
-                <input id="respostaIncorreta1${i + 1}" type="text" placeholder="Resposta incorreta 1">
-                <input id="urlRespostaIncorreta1${i + 1}" type="text" placeholder="URL da imagem 1">
-                <input id="respostaIncorreta2${i + 1}" type="text" placeholder="Resposta incorreta 2">
-                <input id="urlRespostaIncorreta2${i + 1}" type="text" placeholder="URL da imagem 2">
-                <input id="respostaIncorreta2${i + 1}" type="text" placeholder="Resposta incorreta 3">
-                <input id="urlRespostaIncorreta3${i + 1}" type="text" placeholder="URL da imagem 3">
+                <input id="respostaIncorreta11" type="text" placeholder="Resposta incorreta 1">
+                <input id="urlRespostaIncorreta11" type="text" placeholder="URL da imagem 1">
+                <input id="respostaIncorreta21" type="text" placeholder="Resposta incorreta 2">
+                <input id="urlRespostaIncorreta21" type="text" placeholder="URL da imagem 2">
+                <input id="respostaIncorreta21" type="text" placeholder="Resposta incorreta 3">
+                <input id="urlRespostaIncorreta31" type="text" placeholder="URL da imagem 3">
+            </div>
+        </article>
+        `
+    for (let i = 2; i <= qtdPerguntas; i++) {
+        perguntasHTML.innerHTML += `
+        <article class="adiciona-a-pergunta" onclick="mostrarInputOutrasPerguntas(this, ${i})">
+            <div class="adicionar-pergunta">
+                <p>Pergunta ${i}</p>               
+                <img src="./imagens/adicionarNivel.svg" onclick="editarPergunta(this)">               
             </div>
         </article>
         `;
     }
+}
+
+function mostrarInputOutrasPerguntas(ondeEstaSendoAdicionadosOsInputs, indiceIdentificador) {
+    ondeEstaSendoAdicionadosOsInputs.innerHTML += `
+    <div class="">
+        <input id="textoPergunta${indiceIdentificador}" type="text" placeholder="Texto da pergunta">
+        <input id="corPergunta${indiceIdentificador}" type="text" placeholder="Cor de fundo da pergunta">
+            <h1>Resposta correta</h1>
+        <input id="respostaCorreta${indiceIdentificador}" type="text" placeholder="Resposta correta">
+        <input id="urlRespostaCorreta${indiceIdentificador}" type="text" placeholder="URL da imagem">
+            <h1>Respostas incorretas</h1>
+        <input id="respostaIncorreta1${indiceIdentificador}" type="text" placeholder="Resposta incorreta 1">
+        <input id="urlRespostaIncorreta1${indiceIdentificador}" type="text" placeholder="URL da imagem 1">
+        <input id="respostaIncorreta2${indiceIdentificador}" type="text" placeholder="Resposta incorreta 2">
+        <input id="urlRespostaIncorreta2${indiceIdentificador}" type="text" placeholder="URL da imagem 2">
+        <input id="respostaIncorreta2${indiceIdentificador}" type="text" placeholder="Resposta incorreta 3">
+        <input id="urlRespostaIncorreta3${indiceIdentificador}" type="text" placeholder="URL da imagem 3">
+    </div>
+    `
 }
 
 
