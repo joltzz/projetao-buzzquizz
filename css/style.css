@@ -250,6 +250,15 @@ main {
     padding: 24px;
 }
 
+.info-nivel p{
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+}
+.info-nivel .inputs p{
+    margin-bottom: 30px;
+}
 
 /* Tela Finalizar quizz  */
 .quizz-Pronto {
