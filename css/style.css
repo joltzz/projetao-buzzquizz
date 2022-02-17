@@ -159,7 +159,6 @@ main {
 
 .criacao-de-quizz .inputs {
     background-color: #ffffff;
-    padding: 21px 18px 24px 18px;
 }
 
 .criacao-de-quizz input {
@@ -206,6 +205,7 @@ main {
 }
 
 .adicionar-pergunta {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     padding: 24px;

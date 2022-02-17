@@ -173,52 +173,20 @@
         <section class="info-basica">
             <h1>Comece pelo começo</h1>
             <div class="inputs">
-                <input type="text" placeholder="Título do seu quizz">
-                <input type="text" placeholder="URL da imagem do seu quizz">
-                <input type="text" placeholder="Quantidade de perguntas do quizz">
-                <input type="text" placeholder="Quantidade de níveis do quizz">
+                <input class="titulo-criacao-quiz" type="text" placeholder="Título do seu quizz">
+                <input class="url-criacao-quiz" type="text" placeholder="URL da imagem do seu quizz">
+                <input class="qtd-de-perguntas" type="text" placeholder="Quantidade de perguntas do quizz">
+                <input class="qtd-de-niveis" type="text" placeholder="Quantidade de níveis do quizz">
             </div>
-            <button>Prosseguir para criar perguntas</button>
+            <button onclick="criarPerguntasQuizz()">Prosseguir para criar perguntas</button>
         </section>
 
         <section class="criacao-perguntas esconder">
             <h1>Crie suas perguntas</h1>
-            <div class="inputs">
-                <article class="pergunta">
-                    <h1>Pergunta 1</h1>
-                    <input type="text" placeholder="Texto da pergunta">
-                    <input type="text" placeholder="Cor de fundo da pergunta">
-
-                    <h1 style="margin-top: 28px;">Resposta correta</h1>
-                    <input type="text" placeholder="Resposta correta">
-                    <input type="text" placeholder="URL da imagem">
-
-                    <h1 style="margin-top: 28px;">Respostas incorretas</h1>
-                    <input type="text" placeholder="Resposta incorreta 1">
-                    <input type="text" placeholder="URL da imagem 1">
-                    <input type="text" placeholder="Resposta incorreta 2">
-                    <input type="text" placeholder="URL da imagem 2">
-                    <input type="text" placeholder="Resposta incorreta 3">
-                    <input type="text" placeholder="URL da imagem 3">
-                </article>
+            <div class="inputs"> 
+                <!--Serão criadas dinamicamente via js--> 
             </div>
-            <section id="pergunta2" style="margin-top:24px">
-                <article class="adiciona-pergunta" >
-                    <div class="adicionar-pergunta">
-                        <p>Pergunta 2</p>
-                        <img src="./imagens/adicionarNivel.svg" onclick="">
-                    </div>
-                </article>
-            </section>
-            <section id="pergunta3" style="margin-top:24px">
-                <article class="adiciona-pergunta" >
-                    <div class="adicionar-pergunta">
-                        <p>Pergunta 3</p>
-                        <img src="./imagens/adicionarNivel.svg" onclick="">
-                    </div>
-                </article>
-            </section>
-            <button>Prosseguir para criar níveis</button>
+            <button onclick="criarNiveisQuizz()">Prosseguir para criar níveis</button>
         </section>
     </main>
 
