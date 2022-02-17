@@ -1,6 +1,5 @@
 document.querySelector(".quizzes-criados ion-icon").onclick = function () { chamarTelaCriarQuizz() }
 document.querySelector(".menu-criar-Quizz button").onclick = function () { chamarTelaCriarQuizz() }
-
 function chamarTelaCriarQuizz() {
     let telaUmPontoUM = document.querySelector("#tela1_1");
     let telaUmPontoDoin = document.querySelector("#tela1_2");
@@ -9,6 +8,14 @@ function chamarTelaCriarQuizz() {
     telaUmPontoUM.classList.add("esconder");
     telaUmPontoDoin.classList.add("esconder");
     telasTresPontoUmETresPontoDois.classList.remove("esconder");
+}
+
+function chamarTelaPerguntasDoQuiz() {
+    let telaCriacaoPerguntas = document.querySelector(".criacao-perguntas");
+    let telaCriacaoComecePeloComeco = document.querySelector(".info-basica");
+
+    telaCriacaoPerguntas.classList.toggle("esconder");
+    telaCriacaoComecePeloComeco.classList.toggle("esconder");
 }
 
 document.querySelector(".criacao-perguntas button").onclick = function () { chamarTelaDecidirNiveis() }
@@ -43,29 +50,6 @@ function voltarHome() {
 }
 
 
-document.querySelector("#nivel2").onclick = function () { adicionarnivel("#nivel2") };
-document.querySelector("#nivel3").onclick = function () { adicionarnivel("#nivel3") };
-function adicionarnivel(nivel) {
-    let conteudo = document.querySelector(nivel);
-    conteudo.innerHTML += `
-    <div class="area-de-inputs">
-                <input type="text" placeholder="Título do nível">
-                <input type="text" placeholder="% de acerto mínima">
-                <input type="text" placeholder="URL da imagem do nível">
-                <textarea name="" id="" class="area-de-texto" placeholder="Descrição do nível"></textarea>
-            </div>
-    `
-    document.querySelector(nivel).onclick = ""
-}
-
-function chamarTelaPerguntasDoQuiz() {
-    let telaCriacaoPerguntas = document.querySelector(".criacao-perguntas");
-    let telaCriacaoComecePeloComeco = document.querySelector(".info-basica");
-
-    telaCriacaoPerguntas.classList.toggle("esconder");
-    telaCriacaoComecePeloComeco.classList.toggle("esconder");
-}
-
 
 //Verificação das infos necessarias para criar as perguntas
 function criarPerguntasQuizz() {
@@ -84,8 +68,6 @@ function renderizarCriacaoPerguntas() {
     qtdPerguntas = parseInt(document.querySelector(".criacao-de-quizz .info-basica .qtd-de-perguntas").value);
     // document.querySelector(".criacao-de-quizz .criacao-perguntas .area-de-inputs").innerHTML = '';
     let perguntasHTML = document.querySelector(".criacao-de-quizz .criacao-perguntas .area-de-inputs");
-    // Primeiro, colocar a quantidade de perguntas
-
     perguntasHTML.innerHTML += `
         <article class="adiciona-a-pergunta" >
             <div class="adicionar-pergunta">
@@ -119,7 +101,7 @@ function renderizarCriacaoPerguntas() {
         `;
     }
 }
-
+//Mostra os iputs das perguntas depois da primeira conforme o usuário clica na barra...
 function mostrarInputOutrasPerguntas(ondeEstaSendoAdicionadosOsInputs, indiceIdentificador) {
     ondeEstaSendoAdicionadosOsInputs.innerHTML += `
     <div class="">
@@ -138,7 +120,6 @@ function mostrarInputOutrasPerguntas(ondeEstaSendoAdicionadosOsInputs, indiceIde
     </div>
     `
 }
-
 
 // Validação das infos basicas fornecidas 
 function validarInfoBasica() {
@@ -207,3 +188,27 @@ function editarPergunta(perguntaSelecionada) {
         }
     })
 }
+
+
+
+// *********************************************************************************
+// Aqui estou comecando a mexer nas validações dos níveis e nas condicoes para ficar 
+// com comportamento semelhante ao das perguntas 
+// *********************************************************************************
+document.querySelector("#nivel2").onclick = function () { adicionarnivel("#nivel2") };
+document.querySelector("#nivel3").onclick = function () { adicionarnivel("#nivel3") };
+function adicionarnivel(nivel) {
+    let conteudo = document.querySelector(nivel);
+    conteudo.innerHTML += `
+    <div class="area-de-inputs">
+                <input type="text" placeholder="Título do nível">
+                <input type="text" placeholder="% de acerto mínima">
+                <input type="text" placeholder="URL da imagem do nível">
+                <textarea name="" id="" class="area-de-texto" placeholder="Descrição do nível"></textarea>
+            </div>
+    `
+    document.querySelector(nivel).onclick = ""
+}
+
+
+
