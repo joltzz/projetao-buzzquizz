@@ -48,7 +48,7 @@ document.querySelector("#nivel3").onclick = function () { adicionarnivel("#nivel
 function adicionarnivel(nivel) {
     let conteudo = document.querySelector(nivel);
     conteudo.innerHTML += `
-    <div class="inputs">
+    <div class="area-de-inputs">
                 <input type="text" placeholder="Título do nível">
                 <input type="text" placeholder="% de acerto mínima">
                 <input type="text" placeholder="URL da imagem do nível">
@@ -82,8 +82,8 @@ function criarPerguntasQuizz() {
 let qtdPerguntas = 0;
 function renderizarCriacaoPerguntas() {
     qtdPerguntas = parseInt(document.querySelector(".criacao-de-quizz .info-basica .qtd-de-perguntas").value);
-    // document.querySelector(".criacao-de-quizz .criacao-perguntas .inputs").innerHTML = '';
-    let perguntasHTML = document.querySelector(".criacao-de-quizz .criacao-perguntas .inputs");
+    // document.querySelector(".criacao-de-quizz .criacao-perguntas .area-de-inputs").innerHTML = '';
+    let perguntasHTML = document.querySelector(".criacao-de-quizz .criacao-perguntas .area-de-inputs");
     // Primeiro, colocar a quantidade de perguntas
 
     perguntasHTML.innerHTML += `

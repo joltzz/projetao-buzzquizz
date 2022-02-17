@@ -172,7 +172,7 @@
     <main id="tela3_1-2" class="criacao-de-quizz esconder">
         <section class="info-basica">
             <h1>Comece pelo começo</h1>
-            <div class="inputs">
+            <div class="area-de-inputs">
                 <input class="titulo-criacao-quiz" type="text" placeholder="Título do seu quizz">
                 <input class="url-criacao-quiz" type="text" placeholder="URL da imagem do seu quizz">
                 <input class="qtd-de-perguntas" type="text" placeholder="Quantidade de perguntas do quizz">
@@ -183,7 +183,7 @@
 
         <section class="criacao-perguntas esconder">
             <h1>Crie suas perguntas</h1>
-            <div class="inputs"> 
+            <div class="area-de-inputs"> 
                 <!--Serão criadas dinamicamente via js--> 
             </div>
             <button onclick="criarNiveisQuizz()">Prosseguir para criar níveis</button>
@@ -193,25 +193,31 @@
     <main id="tela3_3" class="criacao-de-quizz esconder">
         <section class="info-nivel">
             <h1>Agora, decida os níveis!</h1>
-            <div class="inputs">
-                <p>Nível 1</p>
-                <input type="text" placeholder="Título do nível">
-                <input type="text" placeholder="% de acerto mínima">
-                <input type="text" placeholder="URL da imagem do nível">
-                <textarea name="" id="" class="area-de-texto" placeholder="Descrição do nível"></textarea>
+
+            <div id="nivel3" class="adiciona-nivel">
+                <div class="adicionar-nivel">
+                    <p>Nível 1</p>
+                </div>
+                <div class="area-de-inputs">
+                    <input type="text" placeholder="Título do nível">
+                    <input type="text" placeholder="% de acerto mínima">
+                    <input type="text" placeholder="URL da imagem do nível">
+                    <textarea name="" id="" class="area-de-texto" placeholder="Descrição do nível"></textarea>
+                </div>
             </div>
-            <article id="nivel2" class="adiciona-nivel">
+            
+            <div id="nivel2" class="adiciona-nivel">
                 <div class="adicionar-nivel">
                     <p>Nível 2</p>
                     <img src="./imagens/adicionarNivel.svg">
                 </div>
-            </article>
-            <article id="nivel3" class="adiciona-nivel">
+            </div>
+            <div id="nivel3" class="adiciona-nivel">
                 <div class="adicionar-nivel">
                     <p>Nível 3</p>
                     <img src="./imagens/adicionarNivel.svg">
                 </div>
-            </article>
+            </div>
             <button>Finalizar Quizz</button>
     </main>
 
