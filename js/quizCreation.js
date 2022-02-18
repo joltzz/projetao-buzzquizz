@@ -18,9 +18,7 @@ function chamarTelaPerguntasDoQuiz() {
     telaCriacaoComecePeloComeco.classList.toggle("esconder");
 }
 
-document.querySelector(".criacao-perguntas button").onclick = function () { chamarTelaDecidirNiveis() }
 function chamarTelaDecidirNiveis() {
-    // Antes dess funcao ser executada será necessário a validação da tela anterior
     console.log("esta chamando a funcao")
     let teladecidirNiveis = document.querySelector("#tela3_3");
     let telaCriacaoPerguntas = document.querySelector(".criacao-perguntas");
@@ -92,8 +90,8 @@ function renderizarCriacaoPerguntas() {
         `
     for (let i = 2; i <= qtdPerguntas; i++) {
         perguntasHTML.innerHTML += `
-        <article class="adiciona-a-pergunta" onclick="mostrarInputOutrasPerguntas(this, ${i})">
-            <div class="adicionar-pergunta">
+        <article class="adiciona-a-pergunta">
+            <div class="adicionar-pergunta" onclick="mostrarInputOutrasPerguntas(this, ${i})">
                 <p>Pergunta ${i}</p>               
                 <img src="./imagens/adicionarNivel.svg" onclick="editarPergunta(this)">               
             </div>
@@ -190,7 +188,7 @@ function editarPergunta(perguntaSelecionada) {
 }
 
 
-
+/*
 // *********************************************************************************
 // Aqui estou comecando a mexer nas validações dos níveis e nas condicoes para ficar 
 // com comportamento semelhante ao das perguntas 
@@ -209,6 +207,78 @@ function adicionarnivel(nivel) {
     `
     document.querySelector(nivel).onclick = ""
 }
+*/
+
+function criarNiveisQuizz() {
+    if (validarCriacaoPerguntas()) {
+        renderizarCriacaoNiveis();
+        chamarTelaDecidirNiveis();
+    } else {
+        alert("Preencha os campos corretamente para continuar criando o seu Quizz.\n\nTexto da pergunta: no mínimo 20 caracteres\nCor de fundo: deve ser uma cor em hexadecimal (começar em '#', seguida de 6 caracteres hexadecimais, ou seja, números ou letras de A a F)\nTextos das respostas: não pode estar vazio\nURL das imagens de resposta: deve ter formato de URL\nÉ obrigatória a inserção da resposta correta e de pelo menos 1 resposta errada. Portanto, é permitido existirem perguntas com só 2 ou 3 respostas")
+    }
+}
 
 
+
+let qtdNiveis;
+function renderizarCriacaoNiveis() {
+    qtdNiveis = parseInt(document.querySelector(".criacao-de-quiz .info-basica .qtd-de-niveis").value);
+    document.querySelector(".criacao-de-quiz .adicionar-nivel .inputs").innerHTML = '';
+    let niveisHTML = document.querySelector(".criacao-de-quiz .area-de-inputs .inputs");
+    for (let i = 0; i < qtdNiveis; i++) {
+        niveisHTML.innerHTML += `
+            <article class="area-de-inputs">
+                <div>
+                    <div class="adicionar-nivel">
+                        <p>Nível 1</p>
+                    </div>
+                </div>
+                <div>
+                    <input id="tituloNivel${i + 1}" type="text" placeholder="Título do nível">
+                    <input id="minAcertoNivel${i + 1}" type="text" placeholder="% de acerto mínima">
+                    <input id="urlNivel${i + 1}" type="text" placeholder="URL da imagem do nível">
+                    <textarea id="descricaoNivel${i + 1}" name="descrição" placeholder="Descrição do nível"></textarea>
+                </div>
+            </article>
+        `;
+        for (let i = 2; i <= qtdNiveis; i++){
+            niveisHTML.innerHTML+=`
+            <div>
+                <h1>Nível ${i + 1}</h1>
+                <img class="esconder" onclick="editarNivel(this)" src="./imagens/adicionarNivel.svg"> 
+            </div>
+            `
+        }
+    }
+}
+
+function validarCriacaoNiveis() {
+    let validado=false;
+    let minAcertoNivel0=0;
+    for (let i=0;i<qtdNiveis;i++){
+        let tituloNivel = document.getElementById(`tituloNivel${i}`).value;
+        let minAcertoNivel = document.getElementById(`minAcertoNivel${i}`).value;
+        let urlNivel = document.getElementById(`urlNivel${i}`).value;
+        let descricaoNivel = document.getElementById(`descricaoNivel${i}`).value;
+
+        if (tituloNivel.length < 10 || parseInt(minAcertoNivel)>=0 || parseInt(minAcertoNivel)<=100 || respostaCorreta.length==0 || (urlNivel.indexOf("https://") < 0 && urlNivel.indexOf("http://")) || descricaoNivel.length < 30) {
+            validado = false;
+        } else {
+            validado = true;
+        }
+        if (`minAcertoNivel${i}`==0) {minAcertoNivel0+=1};
+    }
+    if (minAcertoNivel0>0) {validado=true};
+    return validado;
+}
+
+function editarNivel(novoNivelSelecionado) {
+    novoNivelSelecionado.parentNode.parentNode.querySelector("div:last-child").classList.add("nivel-selecionado nivel-atual")
+    document.querySelectorAll(".criacao-niveis article>div:last-child").forEach((elemento) => {
+        if (elemento.classList.contains("nivel-selecionado") && !elemento.classList.contains("nivel-atual")) {
+            elemento.classList.toggle("esconder");
+            elemento.parentNode.querySelector("img").classList.toggle("esconder");
+        }
+    })
+}
 
