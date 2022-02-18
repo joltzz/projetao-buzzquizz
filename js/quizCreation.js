@@ -26,15 +26,14 @@ function chamarTelaDecidirNiveis() {
     telaCriacaoPerguntas.classList.toggle("esconder");
 }
 
-document.querySelector(".info-nivel button").onclick = function () { finalizarQuizz() }
-function finalizarQuizz() {
-    let teladecidirNiveis = document.querySelector("#tela3_3");
-    let telaQuizzPronto = document.querySelector(".finalizar-Quizz");
-    //AQUI TEM QUE ENVIAR O QUIZZ PARA O SERVIDOR
+// function finalizarQuizz() {
+//     let teladecidirNiveis = document.querySelector("#tela3_3");
+//     let telaQuizzPronto = document.querySelector(".finalizar-Quizz");
+//     //AQUI TEM QUE ENVIAR O QUIZZ PARA O SERVIDOR
 
-    telaQuizzPronto.classList.toggle("esconder");
-    teladecidirNiveis.classList.toggle("esconder");
-}
+//     telaQuizzPronto.classList.toggle("esconder");
+//     teladecidirNiveis.classList.toggle("esconder");
+// }
 
 document.querySelector("#tela3_4 .voltar").onclick = function () { voltarHome() }
 function voltarHome() {
@@ -93,21 +92,23 @@ function renderizarCriacaoPerguntas() {
     for (let i = 2; i <= qtdPerguntas; i++) {
         perguntasHTML.innerHTML += `
         <article class="adiciona-a-pergunta">
-            <div class="adicionar-pergunta" onclick="mostrarInputOutrasPerguntas(this, ${i})">
+            <div class="adicionar-pergunta" onclick="removerEsconder(this)">
                 <div class="ajusta-icone"
                     <p>Pergunta ${i}</p>               
                     <img src="./imagens/adicionarNivel.svg"> 
                 </div>
+                ${mostrarInputOutrasPerguntas(i)}
             </div>
         </article>
         `;
     }
 }
 //Mostra os iputs das perguntas depois da primeira conforme o usuário clica na barra...
-function mostrarInputOutrasPerguntas(ondeEstaSendoAdicionadosOsInputs, indiceIdentificador) {
-    ondeEstaSendoAdicionadosOsInputs.removeAttribute("onclick")
-    ondeEstaSendoAdicionadosOsInputs.innerHTML += `
-    <div class="">
+function mostrarInputOutrasPerguntas(indiceIdentificador) {
+    let texto = "";
+    // ondeEstaSendoAdicionadosOsInputs.removeAttribute("onclick")
+    texto += `
+    <div class="todos-os-inputs esconder">
         <input id="textoPergunta${indiceIdentificador}" type="text" placeholder="Texto da pergunta">
         <input id="corPergunta${indiceIdentificador}" type="text" placeholder="Cor de fundo da pergunta">
             <h1>Resposta correta</h1>
@@ -122,6 +123,11 @@ function mostrarInputOutrasPerguntas(ondeEstaSendoAdicionadosOsInputs, indiceIde
         <input id="urlRespostaIncorreta3${indiceIdentificador}" type="text" placeholder="URL da imagem 3">
     </div>
     `
+    return texto;
+}
+
+function removerEsconder(deOnde){
+    deOnde.querySelector(".todos-os-inputs").classList.remove("esconder");
 }
 
 // Validação das infos basicas fornecidas 
@@ -131,7 +137,7 @@ function validarInfoBasica() {
     let qtdDePerguntas = document.querySelector(".criacao-de-quizz .info-basica .qtd-de-perguntas").value;
     let qtdDeNiveis = document.querySelector(".criacao-de-quizz .info-basica .qtd-de-niveis").value;
     if (tituloCriacaoQuizz.length < 20 || tituloCriacaoQuizz.length > 65 || parseInt(qtdDePerguntas) < 3 || parseInt(qtdDeNiveis) < 2 || (urlCriacaoQuizz.indexOf("https://") < 0 && urlCriacaoQuizz.indexOf("http://") < 0)) {
-        return true; //Aqui tem que ser 'false' está true apenas para agilizar os testes
+        return false; //Aqui tem que ser 'false' está true apenas para agilizar os testes
     } else {
         return true;
     }
@@ -184,39 +190,6 @@ function validarCriacaoPerguntas() {
     return variavelBooleanaIF
 }
 
-function finalizarCriacaoQuizz() {
-    if (validarCriacaoNiveis()) {
-        alert("Preencha os campos corretamente para continuar criando o seu Quizz.\n\nTítulo do nível: mínimo de 10 caracteres\n% de acerto mínima: um número entre 0 e 100\nURL da imagem do nível: deve ter formato de URL\nDescrição do nível: mínimo de 30 caracteres\nÉ obrigatório existir pelo menos 1 nível cuja % de acerto mínima seja 0%")
-    } else {
-        document.querySelector(".criacao-niveis").classList.add("esconder");
-        document.querySelector(".finalizar-criacao-quiz").classList.remove("esconder");
-        qtdPerguntas = '';
-        qtdNiveis = '';
-    }
-}
-
-
-/*
-// *********************************************************************************
-// Aqui estou comecando a mexer nas validações dos níveis e nas condicoes para ficar 
-// com comportamento semelhante ao das perguntas 
-// *********************************************************************************
-document.querySelector("#nivel2").onclick = function () { adicionarnivel("#nivel2") };
-document.querySelector("#nivel3").onclick = function () { adicionarnivel("#nivel3") };
-function adicionarnivel(nivel) {
-    let conteudo = document.querySelector(nivel);
-    conteudo.innerHTML += `
-    <div class="area-de-inputs">
-                <input type="text" placeholder="Título do nível">
-                <input type="text" placeholder="% de acerto mínima">
-                <input type="text" placeholder="URL da imagem do nível">
-                <textarea name="" id="" class="area-de-texto" placeholder="Descrição do nível"></textarea>
-            </div>
-    `
-    document.querySelector(nivel).onclick = ""
-}
-*/
-
 function criarNiveisQuizz(variavelqualquer) {
 
     if (validarCriacaoPerguntas() == true) {
@@ -227,57 +200,91 @@ function criarNiveisQuizz(variavelqualquer) {
     }
 }
 
-
-
-let qtdNiveis;
+let qtdNiveis = 0;
 function renderizarCriacaoNiveis() {
     qtdNiveis = parseInt(document.querySelector(".criacao-de-quizz .info-basica .qtd-de-niveis").value);
-    document.querySelector(".criacao-de-quizz .adicionar-nivel").innerHTML = '';
-    let niveisHTML = document.querySelector(".criacao-de-quizz .area-de-inputs");
-    for (let i = 0; i < qtdNiveis; i++) {
+    let niveisHTML = document.querySelector("#tela3_3 .adiciona-nivel");
+    niveisHTML.innerHTML = `
+    <div id="nivel1" class="area-de-inputs">
+        <div class="adicionar-nivel">
+            <p>Nível 1</p>
+        </div>
+        <input type="text" id="tituloNivel1" placeholder="Título do nível">
+        <input type="text" id="minAcertoNivel1" placeholder="% de acerto mínima">
+        <input type="text" id="urlNivel1" placeholder="URL da imagem do nível">
+        <textarea name="" id="descricaoNivel1" class="area-de-texto" placeholder="Descrição do nível"></textarea>
+    </div>
+    `
+
+    for (let i = 2; i <= qtdNiveis; i++) {
         niveisHTML.innerHTML += `
-            <article class="area-de-inputs">
-                <div>
-                    <div class="adicionar-nivel">
-                        <p>Nível 1</p>
-                    </div>
-                </div>
-                <div>
-                    <input id="tituloNivel${i + 1}" type="text" placeholder="Título do nível">
-                    <input id="minAcertoNivel${i + 1}" type="text" placeholder="% de acerto mínima">
-                    <input id="urlNivel${i + 1}" type="text" placeholder="URL da imagem do nível">
-                    <textarea id="descricaoNivel${i + 1}" name="descrição" placeholder="Descrição do nível"></textarea>
-                </div>
-            </article>
-        `;
-        for (let i = 2; i <= qtdNiveis; i++) {
-            niveisHTML.innerHTML += `
-            <div>
-                <h1>Nível ${i + 1}</h1>
-                <img class="esconder" src="./imagens/adicionarNivel.svg"> 
+        <div id="nivel${i}" class="area-de-inputs" onclick="mostrarInputOutrosNiveis(this, ${i})">
+            <div class="adicionar-nivel">
+                <p>Nível ${i}</p>
+                <img src="./imagens/adicionarNivel.svg">  
             </div>
-            `
-        }
+        </div>
+        `;
     }
 }
 
+function mostrarInputOutrosNiveis(ondeEstaSendoAdicionadosOsInputs, indiceIdentificador) {
+    ondeEstaSendoAdicionadosOsInputs.removeAttribute("onclick");
+    ondeEstaSendoAdicionadosOsInputs.innerHTML += `
+        <input type="text" id="tituloNivel${indiceIdentificador}" placeholder="Título do nível">
+        <input type="text" id="minAcertoNivel${indiceIdentificador}" placeholder="% de acerto mínima">
+        <input type="text" id="urlNivel${indiceIdentificador}" placeholder="URL da imagem do nível">
+        <textarea name="" id="descricaoNivel${indiceIdentificador}" class="area-de-texto" placeholder="Descrição do nível"></textarea>
+    `
+}
+
 function validarCriacaoNiveis() {
+    
     let validado = false;
     let minAcertoNivel0 = 0;
-    for (let i = 0; i < qtdNiveis; i++) {
-        let tituloNivel = document.querySelector(`tituloNivel${i}`).value;
-        let minAcertoNivel = document.querySelector(`minAcertoNivel${i}`).value;
-        let urlNivel = document.querySelector(`urlNivel${i}`).value;
-        let descricaoNivel = document.querySelector(`descricaoNivel${i}`).value;
 
-        if (tituloNivel.length < 10 || parseInt(minAcertoNivel) >= 0 || parseInt(minAcertoNivel) <= 100 || respostaCorreta.length == 0 || (urlNivel.indexOf("https://") < 0 && urlNivel.indexOf("http://")) || descricaoNivel.length < 30) {
+    let tituloNivel = null;
+    let minAcertoNivel = null;
+    let urlNivel = null;
+    let descricaoNivel = null;
+
+    console.log(document.querySelector(`#tituloNivel1`))
+
+    for (let i = 1; i <= qtdNiveis; i++) {
+        try{
+            tituloNivel = document.querySelector(`#tituloNivel${i}`).value;
+            minAcertoNivel = document.querySelector(`#minAcertoNivel${i}`).value;
+            urlNivel = document.querySelector(`#urlNivel${i}`).value;
+            descricaoNivel = document.querySelector(`#descricaoNivel${i}`).value;
+        }catch{
+            tituloNivel = "";
+            minAcertoNivel = "";
+            urlNivel = "";
+            descricaoNivel = "";
+        }
+        if (tituloNivel.length < 10 || parseInt(minAcertoNivel) < 0 || parseInt(minAcertoNivel) > 100 || (urlNivel.indexOf("https://") < 0) || descricaoNivel.length < 30) {
             validado = false;
         } else {
             validado = true;
         }
-        if (`minAcertoNivel${i}` == 0) { minAcertoNivel0 += 1 };
+        if (`minAcertoNivel${i}` == 0) {
+            minAcertoNivel0 += 1
+        };
     }
-    if (minAcertoNivel0 > 0) { validado = true };
+    if (minAcertoNivel0 > 0 && validado == true) { validado = true };
+    console.log(validado)
     return validado;
+
 }
 
+document.querySelector("#tela3_3 button").onclick = function () { finalizarCriacaoQuizz() }
+function finalizarCriacaoQuizz() {
+    if (validarCriacaoNiveis() == true) {
+        document.querySelector("#Tela3_3").classList.add("esconder");
+        document.querySelector(".finalizar-criacao-quiz").classList.remove("esconder");
+        qtdPerguntas = '';
+        qtdNiveis = '';
+    } else {
+        alert("Preencha os campos corretamente para continuar criando o seu Quizz.\n\nTítulo do nível: mínimo de 10 caracteres\n% de acerto mínima: um número entre 0 e 100\nURL da imagem do nível: deve ter formato de URL\nDescrição do nível: mínimo de 30 caracteres\nÉ obrigatório existir pelo menos 1 nível cuja % de acerto mínima seja 0%")
+    }
+}
