@@ -239,17 +239,12 @@ function mostrarInputOutrosNiveis(ondeEstaSendoAdicionadosOsInputs, indiceIdenti
 }
 
 function validarCriacaoNiveis() {
-    
     let validado = false;
     let minAcertoNivel0 = 0;
-
     let tituloNivel = null;
     let minAcertoNivel = null;
     let urlNivel = null;
     let descricaoNivel = null;
-
-    console.log(document.querySelector(`#tituloNivel1`))
-
     for (let i = 1; i <= qtdNiveis; i++) {
         try{
             tituloNivel = document.querySelector(`#tituloNivel${i}`).value;
