@@ -26,7 +26,7 @@ function chamarTelaDecidirNiveis() {
     telaCriacaoPerguntas.classList.toggle("esconder");
 }
 
-document.querySelector(".info-nivel button").onclick = function () { finalizarQuizz() }
+document.querySelector("#tela3_3 button").onclick = function () { finalizarQuizz() }
 function finalizarQuizz() {
     let teladecidirNiveis = document.querySelector("#tela3_3");
     let telaQuizzPronto = document.querySelector(".finalizar-Quizz");
@@ -207,11 +207,11 @@ function adicionarnivel(nivel) {
     let conteudo = document.querySelector(nivel);
     conteudo.innerHTML += `
     <div class="area-de-inputs">
-                <input type="text" placeholder="Título do nível">
-                <input type="text" placeholder="% de acerto mínima">
-                <input type="text" placeholder="URL da imagem do nível">
-                <textarea name="" id="" class="area-de-texto" placeholder="Descrição do nível"></textarea>
-            </div>
+        <input type="text" placeholder="Título do nível">
+        <input type="text" placeholder="% de acerto mínima">
+        <input type="text" placeholder="URL da imagem do nível">
+        <textarea name="" id="" class="area-de-texto" placeholder="Descrição do nível"></textarea>
+    </div>
     `
     document.querySelector(nivel).onclick = ""
 }
@@ -229,37 +229,47 @@ function criarNiveisQuizz(variavelqualquer) {
 
 
 
-let qtdNiveis;
+let qtdNiveis = 0;
 function renderizarCriacaoNiveis() {
     qtdNiveis = parseInt(document.querySelector(".criacao-de-quizz .info-basica .qtd-de-niveis").value);
-    document.querySelector(".criacao-de-quizz .adicionar-nivel").innerHTML = '';
-    let niveisHTML = document.querySelector(".criacao-de-quizz .area-de-inputs");
-    for (let i = 0; i < qtdNiveis; i++) {
+    console.log(qtdNiveis)
+    let niveisHTML = document.querySelector("#tela3_3 .adiciona-nivel");
+    niveisHTML.innerHTML = `
+    <div id="nivel1" class="area-de-inputs">
+        <div class="adicionar-nivel">
+            <p>Nível 1</p>
+        </div>
+        <input type="text" id="tituloNivel1" placeholder="Título do nível">
+        <input type="text" id="porcentagemAcertoNivel1" placeholder="% de acerto mínima">
+        <input type="text" id="imagemNivel1" placeholder="URL da imagem do nível">
+        <textarea name="" id="textoNivel1" class="area-de-texto" placeholder="Descrição do nível"></textarea>
+    </div>
+    `
+
+    for (let i = 2; i <= qtdNiveis; i++) {
         niveisHTML.innerHTML += `
-            <article class="area-de-inputs">
-                <div>
-                    <div class="adicionar-nivel">
-                        <p>Nível 1</p>
-                    </div>
-                </div>
-                <div>
-                    <input id="tituloNivel${i + 1}" type="text" placeholder="Título do nível">
-                    <input id="minAcertoNivel${i + 1}" type="text" placeholder="% de acerto mínima">
-                    <input id="urlNivel${i + 1}" type="text" placeholder="URL da imagem do nível">
-                    <textarea id="descricaoNivel${i + 1}" name="descrição" placeholder="Descrição do nível"></textarea>
-                </div>
-            </article>
-        `;
-        for (let i = 2; i <= qtdNiveis; i++) {
-            niveisHTML.innerHTML += `
-            <div>
-                <h1>Nível ${i + 1}</h1>
-                <img class="esconder" src="./imagens/adicionarNivel.svg"> 
+        <div id="nivel${i}" class="area-de-inputs" onclick="mostrarInputOutrosNiveis(this, ${i})">
+            <div class="adicionar-nivel">
+                <p>Nível ${i}</p>
+                <img src="./imagens/adicionarNivel.svg">  
             </div>
-            `
-        }
+        </div>
+        `;
     }
 }
+
+function mostrarInputOutrosNiveis(ondeEstaSendoAdicionadosOsInputs, indiceIdentificador) {
+    ondeEstaSendoAdicionadosOsInputs.removeAttribute("onclick");
+    ondeEstaSendoAdicionadosOsInputs.innerHTML += `
+        <input type="text" id="tituloNivel${indiceIdentificador}" placeholder="Título do nível">
+        <input type="text" id="porcentagemAcertoNivel${indiceIdentificador}" placeholder="% de acerto mínima">
+        <input type="text" id="imagemNivel${indiceIdentificador}" placeholder="URL da imagem do nível">
+        <textarea name="" id="textoNivel${indiceIdentificador}" class="area-de-texto" placeholder="Descrição do nível"></textarea>
+    `
+}
+
+
+
 
 function validarCriacaoNiveis() {
     let validado = false;
