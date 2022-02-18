@@ -155,8 +155,18 @@ function validarCriacaoPerguntas() {
             let urlRespostaIncorreta2 = '';
             let respostaIncorreta3 = '';
             let urlRespostaIncorreta3 = '';
-            return false;
+            // return false;
         }
+        console.log(textoPergunta.length)
+        console.log(corPergunta)
+        console.log(respostaCorreta.length)
+        console.log(urlRespostaCorreta)
+        console.log(respostaIncorreta1.length)
+        console.log(urlRespostaIncorreta1)
+        console.log(respostaIncorreta2.length)
+        console.log(urlRespostaIncorreta2)
+        console.log(respostaIncorreta3.length)
+        console.log(urlRespostaIncorreta3)
         if (textoPergunta.length < 20 || corPergunta.length != 7 || corPergunta.indexOf("#") < 0 || respostaCorreta.length == 0 || urlRespostaCorreta.indexOf("https://") < 0 || urlRespostaCorreta.indexOf("http://") < 0 || respostaIncorreta1.length == 0 || urlRespostaIncorreta1.indexOf("https://") < 0 || urlRespostaIncorreta1.indexOf("http://") < 0) {
             return false;
         } else if (respostaIncorreta2.length > 0 && (urlRespostaIncorreta2.indexOf("https://") < 0 || urlRespostaIncorreta2.indexOf("http://") < 0)) {
@@ -203,7 +213,7 @@ function adicionarnivel(nivel) {
 */
 
 function criarNiveisQuizz() {
-    console.log("TESTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+    console.log(validarCriacaoPerguntas())
     if (validarCriacaoPerguntas()) {
         renderizarCriacaoNiveis();
         chamarTelaDecidirNiveis();
