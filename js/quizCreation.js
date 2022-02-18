@@ -1,5 +1,5 @@
-document.querySelector(".quizzes-criados ion-icon").onclick = function () { chamarTelaCriarQuizz() }
-document.querySelector(".menu-criar-Quizz button").onclick = function () { chamarTelaCriarQuizz() }
+document.querySelector(".quizzes-criados ion-icon").onclick = function () { chamarTelaCriarQuizz() };
+document.querySelector(".menu-criar-Quizz button").onclick = function () { chamarTelaCriarQuizz() };
 function chamarTelaCriarQuizz() {
     let telaUmPontoUM = document.querySelector("#tela1_1");
     let telaUmPontoDoin = document.querySelector("#tela1_2");
@@ -16,7 +16,7 @@ function chamarTelaPerguntasDoQuiz() {
 
     telaCriacaoPerguntas.classList.toggle("esconder");
     telaCriacaoComecePeloComeco.classList.toggle("esconder");
-}
+};
 
 function chamarTelaDecidirNiveis() {
     let teladecidirNiveis = document.querySelector("#tela3_3");
@@ -24,39 +24,29 @@ function chamarTelaDecidirNiveis() {
 
     teladecidirNiveis.classList.toggle("esconder");
     telaCriacaoPerguntas.classList.toggle("esconder");
-}
-
-// function finalizarQuizz() {
-//     let teladecidirNiveis = document.querySelector("#tela3_3");
-//     let telaQuizzPronto = document.querySelector(".finalizar-Quizz");
-//     //AQUI TEM QUE ENVIAR O QUIZZ PARA O SERVIDOR
-
-//     telaQuizzPronto.classList.toggle("esconder");
-//     teladecidirNiveis.classList.toggle("esconder");
-// }
+};
 
 document.querySelector("#tela3_4 .voltar").onclick = function () { voltarHome() }
 function voltarHome() {
     let telaFinalizar = document.querySelector("#tela3_4");
     let telaVoltarHome = document.querySelector("#tela1_2");
-    //AQUI TEM QUE ENVIAR O QUIZZ PARA O SERVIDOR
 
     telaFinalizar.classList.toggle("esconder");
     telaVoltarHome.classList.toggle("esconder");
-}
+};
 
 
 
 //Verificação das infos necessarias para criar as perguntas
 function criarPerguntasQuizz() {
     if (validarInfoBasica()) {
-        chamarTelaPerguntasDoQuiz()
+        chamarTelaPerguntasDoQuiz();
         renderizarCriacaoPerguntas();
 
     } else {
-        alert("Preencha os campos corretamente para continuar criando o seu Quizz.\n\nTítulo do quizz: deve ter no mínimo 20 e no máximo 65 caracteres\nURL da Imagem: deve ter formato de URL\nQuantidade de perguntas: no mínimo 3 perguntas\nQuantidade de níveis: no mínimo 2 níveis")
+        alert("Preencha os campos corretamente para continuar criando o seu Quizz.\n\nTítulo do quizz: deve ter no mínimo 20 e no máximo 65 caracteres\nURL da Imagem: deve ter formato de URL\nQuantidade de perguntas: no mínimo 3 perguntas\nQuantidade de níveis: no mínimo 2 níveis");
     }
-}
+};
 
 
 //Renderizar as perguntas de acordo com a qtd selecionada no HTML
@@ -88,7 +78,7 @@ function renderizarCriacaoPerguntas() {
                 <input id="urlRespostaIncorreta31" type="text" placeholder="URL da imagem 3">
             </div>
         </article>
-        `
+        `;
     for (let i = 2; i <= qtdPerguntas; i++) {
         perguntasHTML.innerHTML += `
         <article class="adiciona-a-pergunta">
@@ -122,13 +112,9 @@ function mostrarInputOutrasPerguntas(indiceIdentificador) {
         <input id="respostaIncorreta2${indiceIdentificador}" type="text" placeholder="Resposta incorreta 3">
         <input id="urlRespostaIncorreta3${indiceIdentificador}" type="text" placeholder="URL da imagem 3">
     </div>
-    `
+    `;
     return texto;
-}
-
-function removerEsconder(deOnde){
-    deOnde.querySelector(".todos-os-inputs").classList.remove("esconder");
-}
+};
 
 // Validação das infos basicas fornecidas 
 function validarInfoBasica() {
@@ -137,11 +123,11 @@ function validarInfoBasica() {
     let qtdDePerguntas = document.querySelector(".criacao-de-quizz .info-basica .qtd-de-perguntas").value;
     let qtdDeNiveis = document.querySelector(".criacao-de-quizz .info-basica .qtd-de-niveis").value;
     if (tituloCriacaoQuizz.length < 20 || tituloCriacaoQuizz.length > 65 || parseInt(qtdDePerguntas) < 3 || parseInt(qtdDeNiveis) < 2 || (urlCriacaoQuizz.indexOf("https://") < 0 && urlCriacaoQuizz.indexOf("http://") < 0)) {
-        return false; //Aqui tem que ser 'false' está true apenas para agilizar os testes
+        return false; //Aqui tem que ser 'false'
     } else {
         return true;
     }
-}
+};
 
 function validarCriacaoPerguntas() {
     let textoPergunta = null;
@@ -154,7 +140,7 @@ function validarCriacaoPerguntas() {
     let urlRespostaIncorreta2 = null;
     let respostaIncorreta3 = null;
     let urlRespostaIncorreta3 = null;
-    let variavelBooleanaIF = false
+    let variavelBooleanaIF = false;
 
     for (let i = 1; i <= qtdPerguntas; i++) {
         try {
@@ -177,26 +163,37 @@ function validarCriacaoPerguntas() {
         }
 
 
-        if (textoPergunta.length < 20 || corPergunta.length != 7 || corPergunta.indexOf("#") < 0 || respostaCorreta.length == 0 || urlRespostaCorreta.indexOf("https://") < 0 || urlRespostaCorreta.indexOf("http://") < 0 || respostaIncorreta1.length == 0 || urlRespostaIncorreta1.indexOf("https://") < 0 || urlRespostaIncorreta1.indexOf("http://") < 0) {
-            variavelBooleanaIF = true; //Aqui tem que ser 'false' está true apenas para agilizar os testes
-        } else if (respostaIncorreta2.length > 0 && (urlRespostaIncorreta2.indexOf("https://") < 0 || urlRespostaIncorreta2.indexOf("http://") < 0)) {
-            variavelBooleanaIF = true; //Aqui tem que ser 'false' está true apenas para agilizar os testes
-        } else if (respostaIncorreta3.length > 0 && (urlRespostaIncorreta3.indexOf("https://") < 0 || urlRespostaIncorreta3.indexOf("http://") < 0)) {
-            variavelBooleanaIF = true; //Aqui tem que ser 'false' está true apenas para agilizar os testes
+        if (textoPergunta.length < 20 || corPergunta.length != 7 || corPergunta.indexOf("#") < 0 ){
+            variavelBooleanaIF = false //Aqui tem que ser 'false' está true apenas para agilizar os testes
+
+        } else if(respostaCorreta.length == 0 || urlRespostaCorreta.indexOf("https://") < 0){
+            variavelBooleanaIF = false //Aqui tem que ser 'false' está true apenas para agilizar os testes
+
+        } else if( respostaIncorreta1.length == 0 || urlRespostaIncorreta1.indexOf("https://") < 0){
+            variavelBooleanaIF = false; //Aqui tem que ser 'false' está true apenas para agilizar os testes
+        } else if (respostaIncorreta2.length > 0){
+            if(urlRespostaIncorreta2.indexOf("https://") < 0){
+                variavelBooleanaIF = false; //Aqui tem que ser 'false' está true apenas para agilizar os testes
+                alert("Você acionou a terceira resposta mas não colocou um url válido para a imagem")
+            }
+        } else if (respostaIncorreta3.length > 0){
+            if(urlRespostaIncorreta3.indexOf("https://") < 0){
+                variavelBooleanaIF = false; //Aqui tem que ser 'false' está true apenas para agilizar os testes
+                alert("Você acionou a quarta resposta mas não colocou um url válido para a imagem")
+            }
         } else {
             variavelBooleanaIF = true;
         }
     }
-    return variavelBooleanaIF
+    return variavelBooleanaIF;
 }
 
 function criarNiveisQuizz(variavelqualquer) {
-
     if (validarCriacaoPerguntas() == true) {
         renderizarCriacaoNiveis();
         chamarTelaDecidirNiveis();
     } else {
-        alert("Preencha os campos corretamente para continuar criando o seu Quizz.\n\nTexto da pergunta: no mínimo 20 caracteres\nCor de fundo: deve ser uma cor em hexadecimal (começar em '#', seguida de 6 caracteres hexadecimais, ou seja, números ou letras de A a F)\nTextos das respostas: não pode estar vazio\nURL das imagens de resposta: deve ter formato de URL\nÉ obrigatória a inserção da resposta correta e de pelo menos 1 resposta errada. Portanto, é permitido existirem perguntas com só 2 ou 3 respostas")
+        alert("Preencha os campos corretamente para continuar criando o seu Quizz.\n\nTexto da pergunta: no mínimo 20 caracteres\nCor de fundo: deve ser uma cor em hexadecimal (começar em '#', seguida de 6 caracteres hexadecimais, ou seja, números ou letras de A a F)\nTextos das respostas: não pode estar vazio\nURL das imagens de resposta: deve ter formato de URL\nÉ obrigatória a inserção da resposta correta e de pelo menos 1 resposta errada. Portanto, é permitido existirem perguntas com só 2 ou 3 respostas");
     }
 }
 
@@ -209,34 +206,39 @@ function renderizarCriacaoNiveis() {
         <div class="adicionar-nivel">
             <p>Nível 1</p>
         </div>
-        <input type="text" id="tituloNivel1" placeholder="Título do nível">
-        <input type="text" id="minAcertoNivel1" placeholder="% de acerto mínima">
-        <input type="text" id="urlNivel1" placeholder="URL da imagem do nível">
-        <textarea name="" id="descricaoNivel1" class="area-de-texto" placeholder="Descrição do nível"></textarea>
+        <div class="todos-os-inputs">
+            <input type="text" id="tituloNivel1" placeholder="Título do nível">
+            <input type="text" id="minAcertoNivel1" placeholder="% de acerto mínima">
+            <input type="text" id="urlNivel1" placeholder="URL da imagem do nível">
+            <textarea name="" id="descricaoNivel1" class="area-de-texto" placeholder="Descrição do nível"></textarea>
+        </div>
     </div>
-    `
+    `;
 
     for (let i = 2; i <= qtdNiveis; i++) {
         niveisHTML.innerHTML += `
-        <div id="nivel${i}" class="area-de-inputs" onclick="mostrarInputOutrosNiveis(this, ${i})">
+        <div id="nivel${i}" class="area-de-inputs" onclick="removerEsconder(this)">
             <div class="adicionar-nivel">
                 <p>Nível ${i}</p>
                 <img src="./imagens/adicionarNivel.svg">  
             </div>
+            ${mostrarInputOutrosNiveis(i)}
         </div>
         `;
-    }
-}
+    };
+};
 
-function mostrarInputOutrosNiveis(ondeEstaSendoAdicionadosOsInputs, indiceIdentificador) {
-    ondeEstaSendoAdicionadosOsInputs.removeAttribute("onclick");
-    ondeEstaSendoAdicionadosOsInputs.innerHTML += `
+function mostrarInputOutrosNiveis(indiceIdentificador) {
+    let texto = `
+    <div class="todos-os-inputs esconder">
         <input type="text" id="tituloNivel${indiceIdentificador}" placeholder="Título do nível">
         <input type="text" id="minAcertoNivel${indiceIdentificador}" placeholder="% de acerto mínima">
         <input type="text" id="urlNivel${indiceIdentificador}" placeholder="URL da imagem do nível">
         <textarea name="" id="descricaoNivel${indiceIdentificador}" class="area-de-texto" placeholder="Descrição do nível"></textarea>
-    `
-}
+    </div>
+    `;
+    return texto;
+};
 
 function validarCriacaoNiveis() {
     let validado = false;
@@ -258,28 +260,40 @@ function validarCriacaoNiveis() {
             descricaoNivel = "";
         }
         if (tituloNivel.length < 10 || parseInt(minAcertoNivel) < 0 || parseInt(minAcertoNivel) > 100 || (urlNivel.indexOf("https://") < 0) || descricaoNivel.length < 30) {
-            validado = false;
+            validado = false; //Aqui tem que ser 'false'
         } else {
             validado = true;
         }
         if (`minAcertoNivel${i}` == 0) {
-            minAcertoNivel0 += 1
+            minAcertoNivel0 += 1;
         };
     }
-    if (minAcertoNivel0 > 0 && validado == true) { validado = true };
-    console.log(validado)
+    if (minAcertoNivel0 > 0 && validado == true) { 
+        validado = true;
+    };
     return validado;
-
 }
 
-document.querySelector("#tela3_3 button").onclick = function () { finalizarCriacaoQuizz() }
+document.querySelector("#tela3_3 button").onclick = function () { finalizarCriacaoQuizz(); };
 function finalizarCriacaoQuizz() {
     if (validarCriacaoNiveis() == true) {
-        document.querySelector("#Tela3_3").classList.add("esconder");
-        document.querySelector(".finalizar-criacao-quiz").classList.remove("esconder");
-        qtdPerguntas = '';
-        qtdNiveis = '';
+            //AQUI TEM QUE ENVIAR O QUIZZ PARA O SERVIDOR
+
+        document.querySelector("#tela3_3").classList.add("esconder");
+        document.querySelector(".finalizar-quizz").classList.remove("esconder");
+        qtdPerguntas = 0;
+        qtdNiveis = 0;
     } else {
-        alert("Preencha os campos corretamente para continuar criando o seu Quizz.\n\nTítulo do nível: mínimo de 10 caracteres\n% de acerto mínima: um número entre 0 e 100\nURL da imagem do nível: deve ter formato de URL\nDescrição do nível: mínimo de 30 caracteres\nÉ obrigatório existir pelo menos 1 nível cuja % de acerto mínima seja 0%")
+        alert("Preencha os campos corretamente para continuar criando o seu Quizz.\n\nTítulo do nível: mínimo de 10 caracteres\n% de acerto mínima: um número entre 0 e 100\nURL da imagem do nível: deve ter formato de URL\nDescrição do nível: mínimo de 30 caracteres\nÉ obrigatório existir pelo menos 1 nível cuja % de acerto mínima seja 0%");
     }
-}
+};
+
+
+
+
+
+
+
+function removerEsconder(deOnde){
+    deOnde.querySelector(".todos-os-inputs").classList.remove("esconder");
+};
