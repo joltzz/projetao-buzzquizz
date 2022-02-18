@@ -69,8 +69,10 @@ function renderizarCriacaoPerguntas() {
     perguntasHTML.innerHTML += `
         <article class="adiciona-a-pergunta" >
             <div class="adicionar-pergunta">
+            <div class="ajusta-icone"
                 <p>Pergunta 1</p>               
-                <img src="./imagens/adicionarNivel.svg" onclick="editarPergunta(this)">               
+                <img src="./imagens/adicionarNivel.svg">    
+            </div>           
             </div>
             <div class="">
                 <input id="textoPergunta1" type="text" placeholder="Texto da pergunta">
@@ -92,8 +94,10 @@ function renderizarCriacaoPerguntas() {
         perguntasHTML.innerHTML += `
         <article class="adiciona-a-pergunta">
             <div class="adicionar-pergunta" onclick="mostrarInputOutrasPerguntas(this, ${i})">
-                <p>Pergunta ${i}</p>               
-                <img src="./imagens/adicionarNivel.svg" onclick="editarPergunta(this)">               
+                <div class="ajusta-icone"
+                    <p>Pergunta ${i}</p>               
+                    <img src="./imagens/adicionarNivel.svg"> 
+                </div>
             </div>
         </article>
         `;
@@ -101,6 +105,7 @@ function renderizarCriacaoPerguntas() {
 }
 //Mostra os iputs das perguntas depois da primeira conforme o usuário clica na barra...
 function mostrarInputOutrasPerguntas(ondeEstaSendoAdicionadosOsInputs, indiceIdentificador) {
+    ondeEstaSendoAdicionadosOsInputs.removeAttribute("onclick")
     ondeEstaSendoAdicionadosOsInputs.innerHTML += `
     <div class="">
         <input id="textoPergunta${indiceIdentificador}" type="text" placeholder="Texto da pergunta">
@@ -133,8 +138,7 @@ function validarInfoBasica() {
 }
 
 function validarCriacaoPerguntas() {
-    for (let i = 0; i < qtdPerguntas; i++) {
-        console.log(i)
+    for (let i = 1; i < qtdPerguntas; i++) {
         try {
             let textoPergunta = document.getElementById(`textoPergunta${i}`).value;
             let corPergunta = document.getElementById(`corPergunta${i}`).value;
@@ -176,17 +180,6 @@ function finalizarCriacaoQuizz() {
     }
 }
 
-//Verficação caso queira adicionar uma nova pergunta, além das 3
-function editarPergunta(perguntaSelecionada) {
-    perguntaSelecionada.parentNode.querySelector("div:last-child").classList.add("pergunta-selecionada")
-    document.querySelectorAll(".criacao-perguntas article>div:last-child").forEach((elemento) => {
-        if (elemento.classList.contains("pergunta-selecionada") && !elemento.classList.contains("pergunta-atual")) {
-            elemento.classList.toggle("esconder");
-            elemento.parentNode.querySelector("img").classList.toggle("esconder");
-        }
-    })
-}
-
 
 /*
 // *********************************************************************************
@@ -210,6 +203,7 @@ function adicionarnivel(nivel) {
 */
 
 function criarNiveisQuizz() {
+    console.log("TESTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
     if (validarCriacaoPerguntas()) {
         renderizarCriacaoNiveis();
         chamarTelaDecidirNiveis();
@@ -245,7 +239,7 @@ function renderizarCriacaoNiveis() {
             niveisHTML.innerHTML+=`
             <div>
                 <h1>Nível ${i + 1}</h1>
-                <img class="esconder" onclick="editarNivel(this)" src="./imagens/adicionarNivel.svg"> 
+                <img class="esconder" src="./imagens/adicionarNivel.svg"> 
             </div>
             `
         }
@@ -270,15 +264,5 @@ function validarCriacaoNiveis() {
     }
     if (minAcertoNivel0>0) {validado=true};
     return validado;
-}
-
-function editarNivel(novoNivelSelecionado) {
-    novoNivelSelecionado.parentNode.parentNode.querySelector("div:last-child").classList.add("nivel-selecionado nivel-atual")
-    document.querySelectorAll(".criacao-niveis article>div:last-child").forEach((elemento) => {
-        if (elemento.classList.contains("nivel-selecionado") && !elemento.classList.contains("nivel-atual")) {
-            elemento.classList.toggle("esconder");
-            elemento.parentNode.querySelector("img").classList.toggle("esconder");
-        }
-    })
 }
 
