@@ -202,6 +202,7 @@ main {
     margin-top: 27px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
     padding: 0px 20px 20px 20px;
+    
 }
 
 .adicionar-pergunta {
@@ -209,11 +210,16 @@ main {
     display: flex;
     justify-content: space-between;
     padding: 24px;
+    flex-direction: column;
 }
 .adicionar-pergunta p{
     font-family: 'Roboto',sans-serif;
     font-size: 20px;
     font-weight: bold;
+}
+.adicionar-pergunta img {
+    width: 26px;
+    height: 23px;
 }
 
 .info-basica p {
@@ -221,6 +227,17 @@ main {
     font-size: 20px;
     font-weight: bold;
     text-align: left;
+}
+
+.ajusta-icone {
+    display: flex;
+    flex-direction: row;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 /* Tela dos niveis */

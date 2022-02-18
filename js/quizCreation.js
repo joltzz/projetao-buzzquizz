@@ -19,7 +19,6 @@ function chamarTelaPerguntasDoQuiz() {
 }
 
 function chamarTelaDecidirNiveis() {
-    console.log("esta chamando a funcao")
     let teladecidirNiveis = document.querySelector("#tela3_3");
     let telaCriacaoPerguntas = document.querySelector(".criacao-perguntas");
 
@@ -54,7 +53,7 @@ function criarPerguntasQuizz() {
     if (validarInfoBasica()) {
         chamarTelaPerguntasDoQuiz()
         renderizarCriacaoPerguntas();
-        
+
     } else {
         alert("Preencha os campos corretamente para continuar criando o seu Quizz.\n\nTítulo do quizz: deve ter no mínimo 20 e no máximo 65 caracteres\nURL da Imagem: deve ter formato de URL\nQuantidade de perguntas: no mínimo 3 perguntas\nQuantidade de níveis: no mínimo 2 níveis")
     }
@@ -70,8 +69,10 @@ function renderizarCriacaoPerguntas() {
     perguntasHTML.innerHTML += `
         <article class="adiciona-a-pergunta" >
             <div class="adicionar-pergunta">
+            <div class="ajusta-icone"
                 <p>Pergunta 1</p>               
-                <img src="./imagens/adicionarNivel.svg" onclick="editarPergunta(this)">               
+                <img src="./imagens/adicionarNivel.svg">    
+            </div>           
             </div>
             <div class="">
                 <input id="textoPergunta1" type="text" placeholder="Texto da pergunta">
@@ -93,8 +94,10 @@ function renderizarCriacaoPerguntas() {
         perguntasHTML.innerHTML += `
         <article class="adiciona-a-pergunta">
             <div class="adicionar-pergunta" onclick="mostrarInputOutrasPerguntas(this, ${i})">
-                <p>Pergunta ${i}</p>               
-                <img src="./imagens/adicionarNivel.svg" onclick="editarPergunta(this)">               
+                <div class="ajusta-icone"
+                    <p>Pergunta ${i}</p>               
+                    <img src="./imagens/adicionarNivel.svg"> 
+                </div>
             </div>
         </article>
         `;
@@ -135,36 +138,50 @@ function validarInfoBasica() {
 }
 
 function validarCriacaoPerguntas() {
+    let textoPergunta = null;
+    let corPergunta = null;
+    let respostaCorreta = null;
+    let urlRespostaCorreta = null;
+    let respostaIncorreta1 = null;
+    let urlRespostaIncorreta1 = null;
+    let respostaIncorreta2 = null;
+    let urlRespostaIncorreta2 = null;
+    let respostaIncorreta3 = null;
+    let urlRespostaIncorreta3 = null;
+    let variavelBooleanaIF = false
+
     for (let i = 1; i <= qtdPerguntas; i++) {
-        console.log(i)
         try {
-            let textoPergunta = document.querySelector(`#textoPergunta${i}`).value;
-            let corPergunta = document.querySelector(`#corPergunta${i}`).value;
-            let respostaCorreta = document.querySelector(`#respostaCorreta${i}`).value;
-            let urlRespostaCorreta = document.querySelector(`#urlRespostaCorreta${i}`).value;
-            let respostaIncorreta1 = document.querySelector(`#respostaIncorreta1${i}`).value;
-            let urlRespostaIncorreta1 = document.querySelector(`#urlRespostaIncorreta1${i}`).value;
-            let respostaIncorreta2 = document.querySelector(`#respostaIncorreta2${i}`).value;
-            let urlRespostaIncorreta2 = document.querySelector(`#urlRespostaIncorreta2${i}`).value;
-            let respostaIncorreta3 = document.querySelector(`#respostaIncorreta3${i}`).value;
-            let urlRespostaIncorreta3 = document.querySelector(`#urlRespostaIncorreta3${i}`).value;
+            textoPergunta = document.querySelector(`#textoPergunta${i}`).value;
+            corPergunta = document.querySelector(`#corPergunta${i}`).value;
+            respostaCorreta = document.querySelector(`#respostaCorreta${i}`).value;
+            urlRespostaCorreta = document.querySelector(`#urlRespostaCorreta${i}`).value;
+            respostaIncorreta1 = document.querySelector(`#respostaIncorreta1${i}`).value;
+            urlRespostaIncorreta1 = document.querySelector(`#urlRespostaIncorreta1${i}`).value;
+            respostaIncorreta2 = document.querySelector(`#respostaIncorreta2${i}`).value;
+            urlRespostaIncorreta2 = document.querySelector(`#urlRespostaIncorreta2${i}`).value;
+            respostaIncorreta3 = document.querySelector(`#respostaIncorreta3${i}`).value;
+            urlRespostaIncorreta3 = document.querySelector(`#urlRespostaIncorreta3${i}`).value;
         } catch {
-            let respostaIncorreta2 = '';
-            let urlRespostaIncorreta2 = '';
-            let respostaIncorreta3 = '';
-            let urlRespostaIncorreta3 = '';
-            return true; //Aqui tem que ser 'false' está true apenas para agilizar os testes
+            respostaIncorreta2 = '';
+            urlRespostaIncorreta2 = '';
+            respostaIncorreta3 = '';
+            urlRespostaIncorreta3 = '';
+            // return false; //Aqui talvez seja necessário ter uma variável booleana também!
         }
+
+
         if (textoPergunta.length < 20 || corPergunta.length != 7 || corPergunta.indexOf("#") < 0 || respostaCorreta.length == 0 || urlRespostaCorreta.indexOf("https://") < 0 || urlRespostaCorreta.indexOf("http://") < 0 || respostaIncorreta1.length == 0 || urlRespostaIncorreta1.indexOf("https://") < 0 || urlRespostaIncorreta1.indexOf("http://") < 0) {
-            return true; //Aqui tem que ser 'false' está true apenas para agilizar os testes
+            variavelBooleanaIF = true; //Aqui tem que ser 'false' está true apenas para agilizar os testes
         } else if (respostaIncorreta2.length > 0 && (urlRespostaIncorreta2.indexOf("https://") < 0 || urlRespostaIncorreta2.indexOf("http://") < 0)) {
-            return true; //Aqui tem que ser 'false' está true apenas para agilizar os testes
+            variavelBooleanaIF = true; //Aqui tem que ser 'false' está true apenas para agilizar os testes
         } else if (respostaIncorreta3.length > 0 && (urlRespostaIncorreta3.indexOf("https://") < 0 || urlRespostaIncorreta3.indexOf("http://") < 0)) {
-            return true; //Aqui tem que ser 'false' está true apenas para agilizar os testes
+            variavelBooleanaIF = true; //Aqui tem que ser 'false' está true apenas para agilizar os testes
         } else {
-            return true;
+            variavelBooleanaIF = true;
         }
     }
+    return variavelBooleanaIF
 }
 
 function finalizarCriacaoQuizz() {
@@ -176,17 +193,6 @@ function finalizarCriacaoQuizz() {
         qtdPerguntas = '';
         qtdNiveis = '';
     }
-}
-
-//Verficação caso queira adicionar uma nova pergunta, além das 3
-function editarPergunta(perguntaSelecionada) {
-    perguntaSelecionada.parentNode.querySelector("div:last-child").classList.add("pergunta-selecionada")
-    document.querySelectorAll(".criacao-perguntas article>div:last-child").forEach((elemento) => {
-        if (elemento.classList.contains("pergunta-selecionada") && !elemento.classList.contains("pergunta-atual")) {
-            elemento.classList.toggle("esconder");
-            elemento.parentNode.querySelector("img").classList.toggle("esconder");
-        }
-    })
 }
 
 
@@ -211,8 +217,9 @@ function adicionarnivel(nivel) {
 }
 */
 
-function criarNiveisQuizz() {
-    if (validarCriacaoPerguntas()) {
+function criarNiveisQuizz(variavelqualquer) {
+
+    if (validarCriacaoPerguntas() == true) {
         renderizarCriacaoNiveis();
         chamarTelaDecidirNiveis();
     } else {
@@ -224,9 +231,9 @@ function criarNiveisQuizz() {
 
 let qtdNiveis;
 function renderizarCriacaoNiveis() {
-    qtdNiveis = parseInt(document.querySelector(".criacao-de-quiz .info-basica .qtd-de-niveis").value);
-    document.querySelector(".criacao-de-quiz .adicionar-nivel .inputs").innerHTML = '';
-    let niveisHTML = document.querySelector(".criacao-de-quiz .area-de-inputs .inputs");
+    qtdNiveis = parseInt(document.querySelector(".criacao-de-quizz .info-basica .qtd-de-niveis").value);
+    document.querySelector(".criacao-de-quizz .adicionar-nivel").innerHTML = '';
+    let niveisHTML = document.querySelector(".criacao-de-quizz .area-de-inputs");
     for (let i = 0; i < qtdNiveis; i++) {
         niveisHTML.innerHTML += `
             <article class="area-de-inputs">
@@ -243,11 +250,11 @@ function renderizarCriacaoNiveis() {
                 </div>
             </article>
         `;
-        for (let i = 2; i <= qtdNiveis; i++){
-            niveisHTML.innerHTML+=`
+        for (let i = 2; i <= qtdNiveis; i++) {
+            niveisHTML.innerHTML += `
             <div>
                 <h1>Nível ${i + 1}</h1>
-                <img class="esconder" onclick="editarNivel(this)" src="./imagens/adicionarNivel.svg"> 
+                <img class="esconder" src="./imagens/adicionarNivel.svg"> 
             </div>
             `
         }
@@ -255,32 +262,22 @@ function renderizarCriacaoNiveis() {
 }
 
 function validarCriacaoNiveis() {
-    let validado=false;
-    let minAcertoNivel0=0;
-    for (let i=0;i<qtdNiveis;i++){
+    let validado = false;
+    let minAcertoNivel0 = 0;
+    for (let i = 0; i < qtdNiveis; i++) {
         let tituloNivel = document.querySelector(`tituloNivel${i}`).value;
         let minAcertoNivel = document.querySelector(`minAcertoNivel${i}`).value;
         let urlNivel = document.querySelector(`urlNivel${i}`).value;
         let descricaoNivel = document.querySelector(`descricaoNivel${i}`).value;
 
-        if (tituloNivel.length < 10 || parseInt(minAcertoNivel)>=0 || parseInt(minAcertoNivel)<=100 || respostaCorreta.length==0 || (urlNivel.indexOf("https://") < 0 && urlNivel.indexOf("http://")) || descricaoNivel.length < 30) {
+        if (tituloNivel.length < 10 || parseInt(minAcertoNivel) >= 0 || parseInt(minAcertoNivel) <= 100 || respostaCorreta.length == 0 || (urlNivel.indexOf("https://") < 0 && urlNivel.indexOf("http://")) || descricaoNivel.length < 30) {
             validado = false;
         } else {
             validado = true;
         }
-        if (`minAcertoNivel${i}`==0) {minAcertoNivel0+=1};
+        if (`minAcertoNivel${i}` == 0) { minAcertoNivel0 += 1 };
     }
-    if (minAcertoNivel0>0) {validado=true};
+    if (minAcertoNivel0 > 0) { validado = true };
     return validado;
-}
-
-function editarNivel(novoNivelSelecionado) {
-    novoNivelSelecionado.parentNode.parentNode.querySelector("div:last-child").classList.add("nivel-selecionado nivel-atual")
-    document.querySelectorAll(".criacao-niveis article>div:last-child").forEach((elemento) => {
-        if (elemento.classList.contains("nivel-selecionado") && !elemento.classList.contains("nivel-atual")) {
-            elemento.classList.toggle("esconder");
-            elemento.parentNode.querySelector("img").classList.toggle("esconder");
-        }
-    })
 }
 
