@@ -53,6 +53,7 @@ function criarPerguntasQuizz() {
 let qtdPerguntas = 0;
 function renderizarCriacaoPerguntas() {
     qtdPerguntas = parseInt(document.querySelector(".criacao-de-quizz .info-basica .qtd-de-perguntas").value);
+    construirObjetoQuestions(qtdPerguntas)
     // document.querySelector(".criacao-de-quizz .criacao-perguntas .area-de-inputs").innerHTML = '';
     let perguntasHTML = document.querySelector(".criacao-de-quizz .criacao-perguntas .area-de-inputs");
     perguntasHTML.innerHTML += `
@@ -141,6 +142,8 @@ function validarCriacaoPerguntas() {
     let respostaIncorreta3 = null;
     let urlRespostaIncorreta3 = null;
     let variavelBooleanaIF = false;
+    let existeResposta3 = false;
+    let existeResposta4 = false;
 
     for (let i = 1; i <= qtdPerguntas; i++) {
         try {
@@ -163,29 +166,63 @@ function validarCriacaoPerguntas() {
         }
 
 
-        if (textoPergunta.length < 20 || corPergunta.length != 7 || corPergunta.indexOf("#") < 0 ){
+        if (textoPergunta.length < 20 || corPergunta.length != 7 || corPergunta.indexOf("#") < 0) {
             variavelBooleanaIF = false //Aqui tem que ser 'false' está true apenas para agilizar os testes
 
-        } else if(respostaCorreta.length == 0 || urlRespostaCorreta.indexOf("https://") < 0){
+        } else if (respostaCorreta.length == 0 || urlRespostaCorreta.indexOf("https://") < 0) {
             variavelBooleanaIF = false //Aqui tem que ser 'false' está true apenas para agilizar os testes
 
-        } else if( respostaIncorreta1.length == 0 || urlRespostaIncorreta1.indexOf("https://") < 0){
+        } else if (respostaIncorreta1.length == 0 || urlRespostaIncorreta1.indexOf("https://") < 0) {
             variavelBooleanaIF = false; //Aqui tem que ser 'false' está true apenas para agilizar os testes
-        } else if (respostaIncorreta2.length > 0){
-            if(urlRespostaIncorreta2.indexOf("https://") < 0){
+        } else if (respostaIncorreta2.length > 0) {
+            existeResposta3 = true;
+            if (urlRespostaIncorreta2.indexOf("https://") < 0) {
                 variavelBooleanaIF = false; //Aqui tem que ser 'false' está true apenas para agilizar os testes
                 alert("Você acionou a terceira resposta mas não colocou um url válido para a imagem")
             }
-        } else if (respostaIncorreta3.length > 0){
-            if(urlRespostaIncorreta3.indexOf("https://") < 0){
+        } else if (respostaIncorreta3.length > 0) {
+            existeResposta4 = true;
+            if (urlRespostaIncorreta3.indexOf("https://") < 0) {
                 variavelBooleanaIF = false; //Aqui tem que ser 'false' está true apenas para agilizar os testes
                 alert("Você acionou a quarta resposta mas não colocou um url válido para a imagem")
             }
         } else {
             variavelBooleanaIF = true;
         }
+
+
+        if (variavelBooleanaIF == true) {
+            questions[i - 1].title = textoPergunta;
+            questions[i - 1].color = corPergunta;
+            questions[i - 1].answers.push({
+                text: respostaCorreta,
+                image: urlRespostaCorreta,
+                isCorrectAnswer: true
+            })
+            questions[i - 1].answers.push({
+                text: respostaIncorreta1,
+                image: urlRespostaIncorreta1,
+                isCorrectAnswer: false
+            })
+
+            if (existeResposta3 == true) {
+                questions[i - 1].answers.push({
+                    text: respostaIncorreta2,
+                    image: urlRespostaIncorreta2,
+                    isCorrectAnswer: false
+                })
+            }
+            if (existeResposta4 == true) {
+                questions[i - 1].answers.push({
+                    text: respostaIncorreta3,
+                    image: urlRespostaIncorreta3,
+                    isCorrectAnswer: false
+                })
+            }
+        }
     }
-    return variavelBooleanaIF;
+    return variavelBooleanaIF; //Tem que rever essa logica aqui, porque eu acho que sempre que a ultima pergunta estiver preenchido tudo corretamente, ele vai retornar true (mesmo se as anteriores não estiverem, talvez seja interessante fazer um array de booleanos e verificar se algum elemento do array é false, se sim, retorna falso, se não retorna verdadeiro)
+
 }
 
 function criarNiveisQuizz(variavelqualquer) {
@@ -200,19 +237,20 @@ function criarNiveisQuizz(variavelqualquer) {
 let qtdNiveis = 0;
 function renderizarCriacaoNiveis() {
     qtdNiveis = parseInt(document.querySelector(".criacao-de-quizz .info-basica .qtd-de-niveis").value);
+    construirObjetoNiveis(qtdNiveis)
     let niveisHTML = document.querySelector("#tela3_3 .adiciona-nivel");
     niveisHTML.innerHTML = `
-    <div id="nivel1" class="area-de-inputs">
-        <div class="adicionar-nivel">
-            <p>Nível 1</p>
+        <div id="nivel1" class="area-de-inputs">
+            <div class="adicionar-nivel">
+                <p>Nível 1</p>
+            </div>
+            <div class="todos-os-inputs">
+                <input type="text" id="tituloNivel1" placeholder="Título do nível">
+                <input type="text" id="minAcertoNivel1" placeholder="% de acerto mínima">
+                <input type="text" id="urlNivel1" placeholder="URL da imagem do nível">
+                <textarea name="" id="descricaoNivel1" class="area-de-texto" placeholder="Descrição do nível"></textarea>
+            </div>
         </div>
-        <div class="todos-os-inputs">
-            <input type="text" id="tituloNivel1" placeholder="Título do nível">
-            <input type="text" id="minAcertoNivel1" placeholder="% de acerto mínima">
-            <input type="text" id="urlNivel1" placeholder="URL da imagem do nível">
-            <textarea name="" id="descricaoNivel1" class="area-de-texto" placeholder="Descrição do nível"></textarea>
-        </div>
-    </div>
     `;
 
     for (let i = 2; i <= qtdNiveis; i++) {
@@ -248,12 +286,12 @@ function validarCriacaoNiveis() {
     let urlNivel = null;
     let descricaoNivel = null;
     for (let i = 1; i <= qtdNiveis; i++) {
-        try{
+        try {
             tituloNivel = document.querySelector(`#tituloNivel${i}`).value;
             minAcertoNivel = document.querySelector(`#minAcertoNivel${i}`).value;
             urlNivel = document.querySelector(`#urlNivel${i}`).value;
             descricaoNivel = document.querySelector(`#descricaoNivel${i}`).value;
-        }catch{
+        } catch {
             tituloNivel = "";
             minAcertoNivel = "";
             urlNivel = "";
@@ -268,32 +306,41 @@ function validarCriacaoNiveis() {
             minAcertoNivel0 += 1;
         };
     }
-    if (minAcertoNivel0 > 0 && validado == true) { 
+    if (minAcertoNivel0 > 0 && validado == true) {
         validado = true;
+    } else {
+        validado = false;
     };
+
+    if (validado == true) {
+        levels[i - 1].title = tituloNivel;
+        levels[i - 1].image = urlNivel;
+        levels[i - 1].text = descricaoNivel;
+        levels[i - 1].minValue = minAcertoNivel;
+    }
     return validado;
 }
 
 document.querySelector("#tela3_3 button").onclick = function () { finalizarCriacaoQuizz(); };
 function finalizarCriacaoQuizz() {
     if (validarCriacaoNiveis() == true) {
-            //AQUI TEM QUE ENVIAR O QUIZZ PARA O SERVIDOR
-
-        document.querySelector("#tela3_3").classList.add("esconder");
-        document.querySelector(".finalizar-quizz").classList.remove("esconder");
-        qtdPerguntas = 0;
-        qtdNiveis = 0;
+        funcaoEnviarQuizzesParaOServidor()
     } else {
         alert("Preencha os campos corretamente para continuar criando o seu Quizz.\n\nTítulo do nível: mínimo de 10 caracteres\n% de acerto mínima: um número entre 0 e 100\nURL da imagem do nível: deve ter formato de URL\nDescrição do nível: mínimo de 30 caracteres\nÉ obrigatório existir pelo menos 1 nível cuja % de acerto mínima seja 0%");
     }
 };
 
+function mostrarPaginaFinal() {
+    document.querySelector("#tela3_3").classList.add("esconder");
+    document.querySelector(".finalizar-quizz").classList.remove("esconder");
+    qtdPerguntas = 0;
+    qtdNiveis = 0;
+}
 
 
 
 
 
-
-function removerEsconder(deOnde){
+function removerEsconder(deOnde) {
     deOnde.querySelector(".todos-os-inputs").classList.remove("esconder");
-};
+}

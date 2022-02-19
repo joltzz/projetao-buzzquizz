@@ -452,3 +452,10 @@ main {
 .esconder {
     display: none;
 }
+
+
+/* ESTILOS DINÂMICOS */
+
+.quiz-main img{
+    width: 100%;
+}

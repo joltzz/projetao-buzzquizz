@@ -8,12 +8,14 @@ let lock = false;
 let error = false;
 
 // requisição para buscar todos os quizzes
-const promisse = axios.get(API_BUZZQUIZZ);
+let promisse = axios.get(API_BUZZQUIZZ);
 promisse.then(renderQuizzes);
+promisse.catch(mensagemDeErro)
 
 
 // função para renderizar os quizzes retirados da api
 function renderQuizzes(resposta) {
+    console.log(resposta)
     quizData = resposta.data;
     const quizList = document.querySelector("#tela1_1 .quizz");
 
@@ -25,6 +27,10 @@ function renderQuizzes(resposta) {
         </div>
         `;
     }
+}
+
+function mensagemDeErro(){
+    alert("Esta dando erro na requisicao")
 }
 
 
