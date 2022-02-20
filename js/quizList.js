@@ -31,7 +31,7 @@ function funcaoEnviarQuizzesParaOServidor(){
         questions: questions,
         levels: levels
     }
-    console.log(variavelEnviarQuizzParaServidor)
+    console.log("este console é o da funcao funcaoEnviarQuizzesParaOServidor: ", variavelEnviarQuizzParaServidor)
 
     let promessaEnviarParaOSErvidor = axios.post(API_POSTBUZZQUIZZ, variavelEnviarQuizzParaServidor)
     promessaEnviarParaOSErvidor.then(mostrarPaginaFinal)
@@ -47,9 +47,28 @@ function mostrarErroAoEviarParaSErvidor(resposta){
 
 
 
-function salvarInformacoesNoNavegadorDoUsuario(respostaDoId){//estou recebendo apenas o id numero
-    let respostaDoIdString = JSON.stringify(respostaDoId) //converto o numero para uma string
-    localStorage.setItem("idSalvo", respostaDoIdString); //salvo no navegador do usuario
+let arrayDeIdsString = localStorage.getItem("idsSalvos")
+if(arrayDeIdsString == null){
+    arrayDeIdsString = "[]";
+}
+let arrayDeIds = JSON.parse(arrayDeIdsString)
+// if(arrayDeIds == null){
+//     arrayDeIds = [];
+// }
+
+console.log(arrayDeIds, arrayDeIdsString)
+
+function salvarInformacoesNoNavegadorDoUsuario(recebidoApenasID){//estou recebendo apenas o id numero
+    let variavelQueReceboApenasOID  = 0;
+    variavelQueReceboApenasOID = recebidoApenasID
+    console.log("Este eh o id que está vindo para salvarInformacoesNoNavegadorDoUsuario: ", variavelQueReceboApenasOID)
+    arrayDeIds.push(variavelQueReceboApenasOID)
+    console.log("Aqui não eh string ainda: ", arrayDeIds)
+
+    arrayDeIdsString = JSON.stringify(arrayDeIds)
+    
+    console.log("Aqui ja eh string:", arrayDeIdsString) //converto o numero para uma string
+    localStorage.setItem("idsSalvos", arrayDeIdsString); //salvo no navegador do usuario
 
     //O proximo passo eh pegar isso quando usar o axios.get
 }
