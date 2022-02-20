@@ -47,8 +47,9 @@ function chamaPaginaDois(resposta) {
     saveData = resposta.data;
     console.log(resposta);
 
+    document.querySelector("#tela1_1").classList.add("esconder");
     document.querySelector("#tela1_2").classList.add("esconder");
-    document.querySelector("#tela2 .pagina-de-um-quizz").classList.remove("esconder");
+    document.querySelector("#tela2").classList.remove("esconder");
     
     renderBanner(); // função para renderizar banner
     renderQuestions();// função para renderizar perguntas
@@ -60,4 +61,19 @@ function renderBanner(){
 
 function renderQuestions(){
     //renderiza as perguntas da tela 2
+}
+
+
+
+
+
+
+
+function reniciarQuiz(){
+    
+}
+
+
+function voltarTelaInicial(){
+
 }
