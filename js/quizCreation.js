@@ -30,9 +30,14 @@ document.querySelector("#tela3_4 .voltar").onclick = function () { voltarHome() 
 function voltarHome() {
     let telaFinalizar = document.querySelector("#tela3_4");
     let telaVoltarHome = document.querySelector("#tela1_2");
+    let mostrarTodosOsQuizzesNaTela1 = document.querySelector("#tela1_1");
+    let esconderVoceNaoCriouAlgumQuizz = document.querySelector("#tela1_1 menu-criar-Quizz")
 
-    telaFinalizar.classList.toggle("esconder");
-    telaVoltarHome.classList.toggle("esconder");
+    telaFinalizar.classList.add("esconder");
+    esconderVoceNaoCriouAlgumQuizz.classList.add("esconder")
+    telaVoltarHome.classList.remove("esconder");
+    mostrarTodosOsQuizzesNaTela1.classList.remove("esconder");
+
 };
 
 
@@ -346,25 +351,20 @@ function mostrarPaginaFinal(respostaComandoPost) {
 
     let respostaDoId = respostaComandoPost.data.id
 
-    console.log("esta eh a resposta do post: " +  respostaComandoPost)
+    console.log("esta eh a resposta do post: ", respostaComandoPost)
     console.log("esta eh a resposta do id do post: " +  respostaDoId)
 
     salvarInformacoesNoNavegadorDoUsuario(respostaDoId)
 }
 
-
-
-
-
+//Algumas funções usadas nas validações do criar quizz
 function removerEsconder(deOnde) {
     deOnde.querySelector(".todos-os-inputs").classList.remove("esconder");
 }
-
 function ehHexadecimal(stringCor) {
     stringCor = stringCor.replace("#", "");
     return /^[A-F0-9]+$/i.test(stringCor);
 }
-
 function verificarSeEhImagem(stringUrl){
     if(stringUrl.indexOf(".jpeg") || stringUrl.indexOf(".jpg") || stringUrl.indexOf(".png") || stringUrl.indexOf(".gif") || stringUrl.indexOf(".tiff") || stringUrl.indexOf(".bmp")){
         return true;

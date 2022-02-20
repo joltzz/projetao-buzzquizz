@@ -56,8 +56,14 @@ let arrayDeIds = JSON.parse(arrayDeIdsString)
 //     arrayDeIds = [];
 // }
 
+if(arrayDeIds.length > 0){
+    document.querySelector("#tela1_1 .menu-criar-Quizz").classList.add("esconder");
+}
+
 console.log(arrayDeIds, arrayDeIdsString)
 
+
+// ESTA FUNCAO PODE SER OTIMIZADA, ESTA ASSIM POR CONTA DE BUGS QUE DERAM, OTIMIZAREI ELA NO FINAL SE DER TEMPO
 function salvarInformacoesNoNavegadorDoUsuario(recebidoApenasID){//estou recebendo apenas o id numero
     let variavelQueReceboApenasOID  = 0;
     variavelQueReceboApenasOID = recebidoApenasID
