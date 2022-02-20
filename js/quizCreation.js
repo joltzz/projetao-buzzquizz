@@ -166,7 +166,7 @@ function validarCriacaoPerguntas() {
         }
 
 
-        if (textoPergunta.length < 20 || corPergunta.length != 7 || corPergunta.indexOf("#") < 0) {
+        if (textoPergunta.length < 20 || corPergunta.length != 7 || corPergunta.indexOf("#") < 0 || ehHexadecimal(corPergunta) == false) {
             variavelBooleanaIF = false //Aqui tem que ser 'false' está true apenas para agilizar os testes
 
         } else if (respostaCorreta.length == 0 || urlRespostaCorreta.indexOf("https://") < 0) {
@@ -220,9 +220,11 @@ function validarCriacaoPerguntas() {
                 })
             }
         }
+        if (variavelBooleanaIF == false) { //Se, em alguma iteração, a variavelbolleana se tornar false, ela retorna esse false e para o for
+            return false
+        }
     }
-    return variavelBooleanaIF; //Tem que rever essa logica aqui, porque eu acho que sempre que a ultima pergunta estiver preenchido tudo corretamente, ele vai retornar true (mesmo se as anteriores não estiverem, talvez seja interessante fazer um array de booleanos e verificar se algum elemento do array é false, se sim, retorna falso, se não retorna verdadeiro)
-
+    return variavelBooleanaIF; //se tudo der certo, ela retorna o valor da variavelbooleana que deve ser true
 }
 
 function criarNiveisQuizz(variavelqualquer) {
@@ -302,23 +304,27 @@ function validarCriacaoNiveis() {
         } else {
             validado = true;
         }
-        if (`minAcertoNivel${i}` == 0) {
+
+        if (`minAcertoNivel${i}` == 0) { //aqui ele pode estar fazendo uma conversão de string para nº
             minAcertoNivel0 += 1;
         };
+
+        if (validado == true) {
+            levels[i - 1].title = tituloNivel;
+            levels[i - 1].image = urlNivel;
+            levels[i - 1].text = descricaoNivel;
+            levels[i - 1].minValue = minAcertoNivel;
+        } else {
+            return false;
+        }
     }
     if (minAcertoNivel0 > 0 && validado == true) {
         validado = true;
     } else {
         validado = false;
+        return validado
     };
-
-    if (validado == true) {
-        levels[i - 1].title = tituloNivel;
-        levels[i - 1].image = urlNivel;
-        levels[i - 1].text = descricaoNivel;
-        levels[i - 1].minValue = minAcertoNivel;
-    }
-    return validado;
+    return validado //se ele nao cair em nenhum return false, o 'validado' estará verdadeiro e ele retorna verdadeiro
 }
 
 document.querySelector("#tela3_3 button").onclick = function () { finalizarCriacaoQuizz(); };
@@ -343,4 +349,9 @@ function mostrarPaginaFinal() {
 
 function removerEsconder(deOnde) {
     deOnde.querySelector(".todos-os-inputs").classList.remove("esconder");
+}
+
+function ehHexadecimal(stringCor) {
+    stringCor = stringCor.replace("#", "");
+    return /^[A-F0-9]+$/i.test(stringCor);
 }
