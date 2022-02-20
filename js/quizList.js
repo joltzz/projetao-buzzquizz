@@ -31,6 +31,7 @@ function funcaoEnviarQuizzesParaOServidor(){
         questions: questions,
         levels: levels
     }
+    console.log(variavelEnviarQuizzParaServidor)
 
     let promessaEnviarParaOSErvidor = axios.post(API_POSTBUZZQUIZZ, variavelEnviarQuizzParaServidor)
     promessaEnviarParaOSErvidor.then(mostrarPaginaFinal)
@@ -38,7 +39,7 @@ function funcaoEnviarQuizzesParaOServidor(){
 }
 
 function mostrarErroAoEviarParaSErvidor(resposta){
-    console.log(resposta)
+    console.log("Houve um erro ao enviar para o servidor: ", resposta)
 }
 
 
