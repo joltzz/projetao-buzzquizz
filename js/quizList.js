@@ -31,6 +31,7 @@ function funcaoEnviarQuizzesParaOServidor(){
         questions: questions,
         levels: levels
     }
+    console.log(variavelEnviarQuizzParaServidor)
 
     let promessaEnviarParaOSErvidor = axios.post(API_POSTBUZZQUIZZ, variavelEnviarQuizzParaServidor)
     promessaEnviarParaOSErvidor.then(mostrarPaginaFinal)
@@ -38,5 +39,17 @@ function funcaoEnviarQuizzesParaOServidor(){
 }
 
 function mostrarErroAoEviarParaSErvidor(resposta){
-    console.log(resposta)
+    console.log("Houve um erro ao enviar para o servidor: ", resposta)
+}
+
+
+
+
+
+
+function salvarInformacoesNoNavegadorDoUsuario(respostaDoId){//estou recebendo apenas o id numero
+    let respostaDoIdString = JSON.stringify(respostaDoId) //converto o numero para uma string
+    localStorage.setItem("idSalvo", respostaDoIdString); //salvo no navegador do usuario
+
+    //O proximo passo eh pegar isso quando usar o axios.get
 }

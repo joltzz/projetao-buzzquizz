@@ -224,11 +224,13 @@ function validarCriacaoPerguntas() {
             return false
         }
     }
+    
     return variavelBooleanaIF; //se tudo der certo, ela retorna o valor da variavelbooleana que deve ser true
 }
 
 function criarNiveisQuizz(variavelqualquer) {
     if (validarCriacaoPerguntas() == true) {
+        console.log(questions)
         renderizarCriacaoNiveis();
         chamarTelaDecidirNiveis();
     } else {
@@ -282,7 +284,7 @@ function mostrarInputOutrosNiveis(indiceIdentificador) {
 
 function validarCriacaoNiveis() {
     let validado = false;
-    let minAcertoNivel0 = 0;
+    let algumNivelTemMinAcertoZero = false;
     let tituloNivel = null;
     let minAcertoNivel = null;
     let urlNivel = null;
@@ -299,14 +301,15 @@ function validarCriacaoNiveis() {
             urlNivel = "";
             descricaoNivel = "";
         }
+
         if (tituloNivel.length < 10 || parseInt(minAcertoNivel) < 0 || parseInt(minAcertoNivel) > 100 || (urlNivel.indexOf("https://") < 0) || descricaoNivel.length < 30  || verificarSeEhImagem(urlNivel) == false) {
             validado = false; //Aqui tem que ser 'false'
         } else {
             validado = true;
         }
 
-        if (`minAcertoNivel${i}` == 0) { //aqui ele pode estar fazendo uma conversão de string para nº
-            minAcertoNivel0 += 1;
+        if (minAcertoNivel == 0) { //aqui ele pode estar fazendo uma conversão de string para nº
+            algumNivelTemMinAcertoZero = true;
         };
 
         if (validado == true) {
@@ -317,17 +320,21 @@ function validarCriacaoNiveis() {
         } else {
             return false;
         }
+        // console.log(validado)
     }
-    if (minAcertoNivel0 > 0 && validado == true) {
+    if (algumNivelTemMinAcertoZero == true && validado == true) {
         validado = true;
     } else {
         return false;
     };
+
     return validado //se ele nao cair em nenhum return false, o 'validado' estará verdadeiro e ele retorna verdadeiro
 }
 
 document.querySelector("#tela3_3 button").onclick = function () { finalizarCriacaoQuizz(); };
 function finalizarCriacaoQuizz() {
+    console.log(levels)
+    console.log(validarCriacaoNiveis())
     if (validarCriacaoNiveis() == true) {
         funcaoEnviarQuizzesParaOServidor()
     } else {
@@ -335,11 +342,14 @@ function finalizarCriacaoQuizz() {
     }
 };
 
-function mostrarPaginaFinal() {
+function mostrarPaginaFinal(respostaComandoPost) {
     document.querySelector("#tela3_3").classList.add("esconder");
     document.querySelector(".finalizar-quizz").classList.remove("esconder");
     qtdPerguntas = 0;
     qtdNiveis = 0;
+
+    let respostaDoId = respostaComandoPost.data.id
+    salvarInformacoesNoNavegadorDoUsuario(respostaDoId)
 }
 
 
