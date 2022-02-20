@@ -40,3 +40,15 @@ function funcaoEnviarQuizzesParaOServidor(){
 function mostrarErroAoEviarParaSErvidor(resposta){
     console.log(resposta)
 }
+
+
+
+
+
+
+function salvarInformacoesNoNavegadorDoUsuario(respostaDoId){//estou recebendo apenas o id numero
+    let respostaDoIdString = JSON.stringify(respostaDoId) //converto o numero para uma string
+    localStorage.setItem("idSalvo", respostaDoIdString); //salvo no navegador do usuario
+
+    //O proximo passo eh pegar isso quando usar o axios.get
+}
