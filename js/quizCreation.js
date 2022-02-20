@@ -122,10 +122,12 @@ function mostrarInputOutrasPerguntas(indiceIdentificador) {
     return texto;
 };
 
-// Validação das infos basicas fornecidas 
+// Validação das infos basicas fornecidas
+let urlCriacaoQuizz = null;
+let tituloCriacaoQuizz = null;
 function validarInfoBasica() {
-    let tituloCriacaoQuizz = document.querySelector(".criacao-de-quizz .info-basica .titulo-criacao-quiz").value;
-    let urlCriacaoQuizz = document.querySelector(".criacao-de-quizz .info-basica .url-criacao-quiz").value;
+    tituloCriacaoQuizz = document.querySelector(".criacao-de-quizz .info-basica .titulo-criacao-quiz").value;
+    urlCriacaoQuizz = document.querySelector(".criacao-de-quizz .info-basica .url-criacao-quiz").value;
     let qtdDePerguntas = document.querySelector(".criacao-de-quizz .info-basica .qtd-de-perguntas").value;
     let qtdDeNiveis = document.querySelector(".criacao-de-quizz .info-basica .qtd-de-niveis").value;
     if (tituloCriacaoQuizz.length < 20 || tituloCriacaoQuizz.length > 65 || parseInt(qtdDePerguntas) < 3 || parseInt(qtdDeNiveis) < 2 || urlCriacaoQuizz.indexOf("https://") < 0 || verificarSeEhImagem(urlCriacaoQuizz) == false ) {
@@ -353,6 +355,14 @@ function mostrarPaginaFinal(respostaComandoPost) {
 
     console.log("esta eh a resposta do post: ", respostaComandoPost)
     console.log("esta eh a resposta do id do post: " +  respostaDoId)
+
+
+    let colocarImagemQuizPronto = document.querySelector("#tela3_4 .quizz-Pronto")
+    colocarImagemQuizPronto.innerHTML = `
+    <img src="${urlCriacaoQuizz}" alt=""></img>
+    <div class="backgound-gradiente"></div>
+    <p> ${tituloCriacaoQuizz} </p>
+    `
 
     salvarInformacoesNoNavegadorDoUsuario(respostaDoId)
 }
