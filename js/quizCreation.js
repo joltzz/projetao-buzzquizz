@@ -123,7 +123,7 @@ function validarInfoBasica() {
     let urlCriacaoQuizz = document.querySelector(".criacao-de-quizz .info-basica .url-criacao-quiz").value;
     let qtdDePerguntas = document.querySelector(".criacao-de-quizz .info-basica .qtd-de-perguntas").value;
     let qtdDeNiveis = document.querySelector(".criacao-de-quizz .info-basica .qtd-de-niveis").value;
-    if (tituloCriacaoQuizz.length < 20 || tituloCriacaoQuizz.length > 65 || parseInt(qtdDePerguntas) < 3 || parseInt(qtdDeNiveis) < 2 || (urlCriacaoQuizz.indexOf("https://") < 0 && urlCriacaoQuizz.indexOf("http://") < 0)) {
+    if (tituloCriacaoQuizz.length < 20 || tituloCriacaoQuizz.length > 65 || parseInt(qtdDePerguntas) < 3 || parseInt(qtdDeNiveis) < 2 || urlCriacaoQuizz.indexOf("https://") < 0 || verificarSeEhImagem(urlCriacaoQuizz) == false ) {
         return false; //Aqui tem que ser 'false'
     } else {
         return true;
@@ -169,20 +169,20 @@ function validarCriacaoPerguntas() {
         if (textoPergunta.length < 20 || corPergunta.length != 7 || corPergunta.indexOf("#") < 0 || ehHexadecimal(corPergunta) == false) {
             variavelBooleanaIF = false //Aqui tem que ser 'false' está true apenas para agilizar os testes
 
-        } else if (respostaCorreta.length == 0 || urlRespostaCorreta.indexOf("https://") < 0) {
+        } else if (respostaCorreta.length == 0 || urlRespostaCorreta.indexOf("https://") < 0 || verificarSeEhImagem(urlRespostaCorreta) == false) {
             variavelBooleanaIF = false //Aqui tem que ser 'false' está true apenas para agilizar os testes
 
-        } else if (respostaIncorreta1.length == 0 || urlRespostaIncorreta1.indexOf("https://") < 0) {
+        } else if (respostaIncorreta1.length == 0 || urlRespostaIncorreta1.indexOf("https://") < 0 || verificarSeEhImagem(urlRespostaIncorreta1) == false) {
             variavelBooleanaIF = false; //Aqui tem que ser 'false' está true apenas para agilizar os testes
         } else if (respostaIncorreta2.length > 0) {
             existeResposta3 = true;
-            if (urlRespostaIncorreta2.indexOf("https://") < 0) {
+            if (urlRespostaIncorreta2.indexOf("https://") < 0 || verificarSeEhImagem(urlRespostaIncorreta2) == false) {
                 variavelBooleanaIF = false; //Aqui tem que ser 'false' está true apenas para agilizar os testes
                 alert("Você acionou a terceira resposta mas não colocou um url válido para a imagem")
             }
         } else if (respostaIncorreta3.length > 0) {
             existeResposta4 = true;
-            if (urlRespostaIncorreta3.indexOf("https://") < 0) {
+            if (urlRespostaIncorreta3.indexOf("https://") < 0 || verificarSeEhImagem(urlRespostaIncorreta3) == false) {
                 variavelBooleanaIF = false; //Aqui tem que ser 'false' está true apenas para agilizar os testes
                 alert("Você acionou a quarta resposta mas não colocou um url válido para a imagem")
             }
@@ -299,7 +299,7 @@ function validarCriacaoNiveis() {
             urlNivel = "";
             descricaoNivel = "";
         }
-        if (tituloNivel.length < 10 || parseInt(minAcertoNivel) < 0 || parseInt(minAcertoNivel) > 100 || (urlNivel.indexOf("https://") < 0) || descricaoNivel.length < 30) {
+        if (tituloNivel.length < 10 || parseInt(minAcertoNivel) < 0 || parseInt(minAcertoNivel) > 100 || (urlNivel.indexOf("https://") < 0) || descricaoNivel.length < 30  || verificarSeEhImagem(urlNivel) == false) {
             validado = false; //Aqui tem que ser 'false'
         } else {
             validado = true;
@@ -321,8 +321,7 @@ function validarCriacaoNiveis() {
     if (minAcertoNivel0 > 0 && validado == true) {
         validado = true;
     } else {
-        validado = false;
-        return validado
+        return false;
     };
     return validado //se ele nao cair em nenhum return false, o 'validado' estará verdadeiro e ele retorna verdadeiro
 }
@@ -354,4 +353,13 @@ function removerEsconder(deOnde) {
 function ehHexadecimal(stringCor) {
     stringCor = stringCor.replace("#", "");
     return /^[A-F0-9]+$/i.test(stringCor);
+}
+
+function verificarSeEhImagem(stringUrl){
+    if(stringUrl.indexOf(".jpeg") || stringUrl.indexOf(".jpg") || stringUrl.indexOf(".png") || stringUrl.indexOf(".gif") || stringUrl.indexOf(".tiff") || stringUrl.indexOf(".bmp")){
+        return true;
+    } else {
+        return false;
+    }
+
 }
