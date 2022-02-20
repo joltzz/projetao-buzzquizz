@@ -31,7 +31,7 @@ function voltarHome() {
     let telaFinalizar = document.querySelector("#tela3_4");
     let telaVoltarHome = document.querySelector("#tela1_2");
     let mostrarTodosOsQuizzesNaTela1 = document.querySelector("#tela1_1");
-    let esconderVoceNaoCriouAlgumQuizz = document.querySelector("#tela1_1 menu-criar-Quizz")
+    let esconderVoceNaoCriouAlgumQuizz = document.querySelector("#tela1_1 .menu-criar-Quizz")
 
     telaFinalizar.classList.add("esconder");
     esconderVoceNaoCriouAlgumQuizz.classList.add("esconder")

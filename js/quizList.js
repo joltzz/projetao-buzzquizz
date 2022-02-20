@@ -58,6 +58,8 @@ let arrayDeIds = JSON.parse(arrayDeIdsString)
 
 if(arrayDeIds.length > 0){
     document.querySelector("#tela1_1 .menu-criar-Quizz").classList.add("esconder");
+}else{
+    document.querySelector("#tela1_2").classList.add("esconder")
 }
 
 console.log(arrayDeIds, arrayDeIdsString)
