@@ -152,7 +152,6 @@ function answerResult(answerElement){
 
 //renderiza o resultado do quiz
 function renderizaResultado(){
-    apareceBotoes()
     let perguntasLength = saveData.questions.length;
     let respostasCertas = document.querySelectorAll(".select.true").length;
     
@@ -170,10 +169,17 @@ function renderizaResultado(){
                 <img src="${level.image}">
                 <p>${level.text}</p>
             </div>
+            <div class="aparece-botoes esconder">
+            <button class="reiniciar" onclick="reniciarQuiz()">
+                Reiniciar Quizz
+            </button>
+            <button class="voltar" onclick="voltarTelaInicial()">
+                Voltar para home
+            </button>
+        </div>
             `;
         }
-    });
-
+    })
 }
 
 function reniciarQuiz(){
@@ -203,10 +209,6 @@ function reniciarQuiz(){
 }
 
 function voltarTelaInicial(){
-    voltarHome() 
+    window.location.reload();
 }
 
-function apareceBotoes(){
-    mostrarBotoes=document.querySelector(".aparece-botoes");
-    mostrarBotoes.classList.remove("esconder")
-}

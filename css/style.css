@@ -467,6 +467,7 @@ main {
     font-family: Roboto;
     font-size: 19px;
     line-height: 22px;
+    color: #ffffff;
 }
 
 .box-de-cada-pergunta {
@@ -495,7 +496,7 @@ main {
     font-family: Roboto;
     font-weight: 700;
     font-size: 19px;
-    color: #FFFFFF;
+    color: black;
     text-align: center;
 }
 
@@ -602,7 +603,12 @@ main {
 
 .aparece-botoes{
     display: flex;
+    background-color: #434CA0;
     flex-direction: column;
+    align-items: center;
+}
+.aparece-botoes button{
+    margin-top: 15px;
 }
 .quiz-main img {
     width: 100%;
