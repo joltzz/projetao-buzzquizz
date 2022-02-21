@@ -21,19 +21,15 @@
 
     <main id="tela1_2" class="">
         <!-- Menu de quando o usuario ja tiver criado algum quizz -->
-        <div class="quizzes-criados ">
+        <div class="quizzes-criados " data-identifier="user-quizzes" >
             <div class="icone-adicionar">
                 <h2>Seus Quizzes</h2>
-                <ion-icon name="add-circle" onclick=""></ion-icon>
+                <ion-icon name="add-circle" onclick="" data-identifier="create-quizz"></ion-icon>
             </div>
         </div>
         <!-- Outros quizzes serão carregados dinamicamente via JS -->
-        <div class="quizz-do-usuario">
-            <img src="https://oimparcial.com.br/app/uploads/2019/10/mini-porco.jpg" alt="">
-            <div class="backgound-gradiente"></div>
-            <p>O quão PotterHead você é?</p>
-        </div>
-        <div class="quizz-do-usuario">
+        <div class="quizz-do-usuario" data-identifier="quizz-card">
+            <!--Vao ser carregados dinamicamente-->
             <img src="https://oimparcial.com.br/app/uploads/2019/10/mini-porco.jpg" alt="">
             <div class="backgound-gradiente"></div>
             <p>O quão PotterHead você é?</p>
@@ -44,11 +40,11 @@
     <main id="tela1_1" class="">
         <div class="menu-criar-Quizz">
             <h3>Você não criou nenhum <br> quizz ainda :( </h3>
-            <button> Criar Quizz </button>
+            <button data-identifier="create-quizz"> Criar Quizz </button>
         </div>
-        <div class="quizzes">
+        <div class="quizzes" data-identifier="general-quizzes">
             <h2>Todos os Quizzes</h2>
-            <div class="todos-os-quizz">
+            <div class="todos-os-quizz" data-identifier="quizz-card">
                 <!-- Outros quizzes serão carregados dinamicamente via JS -->
             </div>
         </div>
@@ -57,111 +53,27 @@
     <!--Página de um quizz-->
     <main id="tela2" class="pagina-de-um-quizz esconder">
         <div class="pagina-de-um-quizz__titulo-de-um-quizz">
-            <p>O quão PotterHead você é?</p>
+            <!--titulo e imagem banner-->
         </div>
-
         <section class="pagina-de-um-quizz__perguntas">
-            <div class="box-de-cada-pergunta">
-                <div class="box-de-cada-pergunta__a-pergunta">
-                    <h4>
-                        Em qual animal Olho-tonto Moody transfiigurou melody
-                    </h4>
-                </div>
-                <div class="box-de-cada-pergunta__as-opcoes">
-                    <div>
-                        <img src="imagens/image3.png" alt="">
-                        <p>Gatíneo</p>
-                    </div>
-                    <div>
-                        <img src="imagens/image3.png" alt="">
-                        <p>Gatíneo</p>
-                    </div>
-                    <div>
-                        <img src="imagens/image3.png" alt="">
-                        <p>Gatíneo</p>
-                    </div>
-                    <div>
-                        <img src="imagens/image3.png" alt="">
-                        <p>Gatíneo</p>
-                    </div>
-                </div>
-
+            <div class="box-de-cada-pergunta__a-pergunta">
+               <!--carregadas dinamicamente-->     
             </div>
-
-            <div class="box-de-cada-pergunta">
-                <div class="box-de-cada-pergunta__a-pergunta">
-                    <h4>
-                        Em qual animal Olho-tonto Moody transfiigurou melody
-                    </h4>
-                </div>
-                <div class="box-de-cada-pergunta__as-opcoes">
-                    <div>
-                        <img src="imagens/image3.png" alt="">
-                        <p>Gatíneo</p>
-                    </div>
-                    <div>
-                        <img src="imagens/image3.png" alt="">
-                        <p>Gatíneo</p>
-                    </div>
-                    <div>
-                        <img src="imagens/image3.png" alt="">
-                        <p>Gatíneo</p>
-                    </div>
-                    <div>
-                        <img src="imagens/image3.png" alt="">
-                        <p>Gatíneo</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="box-de-cada-pergunta">
-                <div class="box-de-cada-pergunta__a-pergunta">
-                    <h4>
-                        Em qual animal Olho-tonto Moody transfiigurou melody
-                    </h4>
-                </div>
-                <div class="box-de-cada-pergunta__as-opcoes">
-                    <div>
-                        <img src="imagens/image3.png" alt="">
-                        <p>Gatíneo</p>
-                    </div>
-                    <div>
-                        <img src="imagens/image3.png" alt="">
-                        <p>Gatíneo</p>
-                    </div>
-                    <div>
-                        <img src="imagens/image3.png" alt="">
-                        <p>Gatíneo</p>
-                    </div>
-                    <div>
-                        <img src="imagens/image3.png" alt="">
-                        <p>Gatíneo</p>
-                    </div>
-                </div>
-            </div>
+          
         </section>
 
         <div class="resultado-final">
-            <div class="resultado-final__porcentagem">
-                <h4>
-                    88% de acerto: Você é praticamente um aluno de Hogwarts!
-                </h4>
-            </div>
-            <div class="resultado-final__imagem-e-parabenizacao">
-                <img src="imagens/gandalf.png" alt="">
-                <p>
-                    Parabéns Potterhead! Bem-vindx a Hogwarts, aproveite o loop infinito de comida e clique no botão
-                    abaixo para usar o vira-tempo e reiniciar este teste.
-                </p>
-            </div>
+            <!--carregado dinamicamente-->
         </div>
 
-        <button class="reiniciar" onclick="reniciarQuiz()">
-            Reiniciar Quizz
-        </button>
-        <button class="voltar" onclick="voltarTelaInicial()">
-            Voltar para home
-        </button>
+        <div class="aparece-botoes esconder">
+            <button class="reiniciar" onclick="reniciarQuiz()">
+                Reiniciar Quizz
+            </button>
+            <button class="voltar" onclick="voltarTelaInicial()">
+                Voltar para home
+            </button>
+        </div>
     </main>
 
     <!--Menu de criação das Perguntas com perguntas-->
@@ -197,9 +109,9 @@
     </main>
 
     <main id="tela3_4" class="finalizar-quizz esconder">
-        <h1>Seu quizz está pronto!</h1>
+        
         <div class="quizz-Pronto">
-            <p>O quão PotterHead é você?</p>
+            
         </div>
         <button class="reiniciar">Acessar Quizz</button>
         <button class="voltar">Voltar para home</button>
