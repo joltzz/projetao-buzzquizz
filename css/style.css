@@ -65,6 +65,44 @@ body {
     border-radius: 50px;
 }
 
+/*Quizzes do usuario*/
+#tela1_2, #tela1_1{
+    padding: 20px;
+}
+
+.quizz-do-usuario{
+    position: relative;
+    overflow: hidden;
+    width: 91%;
+    height: 181px;
+    max-width: 340px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin-top: 14px;
+}
+
+.quizz-do-usuario img {
+    width: 100%;
+}
+
+.quizz-do-usuario p {
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 19px;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    padding: 15px; 
+    color: #ffffff;
+    z-index: 2;
+}
+
+
 
 /* Quizzes Prontos na API */
 .quizzes {
@@ -72,6 +110,8 @@ body {
     font-weight: bold;
     font-size: 20px;
     margin-top: 35px;
+    margin-left: auto;
+    margin-right: auto;
     width: 91%;
 }
 
@@ -79,30 +119,43 @@ body {
     text-align: left;
 }
 
-.quizz {
+.todos-os-quizz {
     margin-top: 14px;
     position: relative;
     width: 100%;
-    height: 181px;
-    border-radius: 5px;
-}
 
-.quizz {
     font-family: 'Roboto';
     font-weight: 400;
     font-size: 19px;
-    padding: 20px;
+    /* padding: 20px; */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #434CA0; */
+    margin: 0% auto;
+
 }
 
 .quiz-main {
     position: relative;
-}
-
-.quizz img {
-    margin-top: 14px;
+    overflow: hidden;
     width: 100%;
     height: 181px;
+    max-width: 340px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 5px;
+    margin-top: 14px;
+    text-overflow: ellipsis;
+}
+
+.quiz-main img {
+    width: 100%;
 }
 
 .quiz-main .description {
@@ -111,10 +164,14 @@ body {
     font-size: 19px;
     color: #ffffff;
     position: absolute;
-    /* background-color: ; */
-    padding: 20px;
     bottom: 0px;
-    z-index: 3;
+    left: 0px;
+    padding: 15px;
+    z-index: 2;
+    width: 100%;
+    max-width: 340px;
+    max-height: 90px;
+    word-wrap: break-word;
 }
 
 
@@ -128,6 +185,7 @@ main {
 
 #tela1_1, #tela1_2, #tela3_1-2, #tela3_3, #tela3_4 {
     padding-top: 31px;
+    width: 100vw;
 }
 
 /* Quizes ja criados pelo usuario */
@@ -336,15 +394,19 @@ main {
 }
 
 .quizz-Pronto p {
-    width: 100%;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto';
+    font-weight: 400;
     font-size: 19px;
-    position: absolute;
-    left: 0px;
-    bottom: 0px;
-    padding: 15px; 
     color: #ffffff;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    padding: 15px;
     z-index: 2;
+    width: 100%;
+    max-width: 340px;
+    max-height: 90px;
+    word-wrap: break-word;
 }
 
 .finalizar-quizz h1 {
@@ -498,6 +560,8 @@ main {
 
 /* ESTILOS DINÂMICOS */
 
+
+
 .quiz-main img {
     width: 100%;
 }
@@ -549,5 +613,5 @@ main {
     height: 100%;
     position: absolute;
     z-index: 1;
-    background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.6));
+    background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
 }

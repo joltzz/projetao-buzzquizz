@@ -17,13 +17,14 @@ promisse.catch(mensagemDeErro)
 function renderQuizzes(resposta) {
     console.log(resposta)
     quizData = resposta.data;
-    const quizList = document.querySelector("#tela1_1 .quizz");
+    const quizList = document.querySelector("#tela1_1 .todos-os-quizz");
 
     for (let i = 0; i < quizData.length; i++) {
         quizList.innerHTML += `
         <div onclick="irParaQuizz(this)" class="quiz-main" id="${quizData[i].id}">
             <img src="${quizData[i].image}" alt="modelo">
-            <div class="description">${quizData[i].title}</div>
+            <div class="backgound-gradiente"></div>
+            <p class="description">${quizData[i].title}</p>
         </div>
         `;
     }
