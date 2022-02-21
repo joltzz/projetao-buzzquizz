@@ -1,4 +1,8 @@
 const API_POSTBUZZQUIZZ = "https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes"
+let arrayDeIdsString = null;
+let arrayDeIds = null;
+verificarIdsSalvos();
+// buscarQuizzComOIdSalvo();
 
 
 let questions = [];
@@ -24,10 +28,10 @@ function construirObjetoNiveis(quantidadeDeNiveisecebido) {
     }
 }
 
-function funcaoEnviarQuizzesParaOServidor(){
+function funcaoEnviarQuizzesParaOServidor() {
     let variavelEnviarQuizzParaServidor = {
-        title:  document.querySelector(".criacao-de-quizz .info-basica .titulo-criacao-quiz").value,
-        image:  document.querySelector(".criacao-de-quizz .info-basica .url-criacao-quiz").value,
+        title: document.querySelector(".criacao-de-quizz .info-basica .titulo-criacao-quiz").value,
+        image: document.querySelector(".criacao-de-quizz .info-basica .url-criacao-quiz").value,
         questions: questions,
         levels: levels
     }
@@ -38,45 +42,62 @@ function funcaoEnviarQuizzesParaOServidor(){
     promessaEnviarParaOSErvidor.catch(mostrarErroAoEviarParaSErvidor)
 }
 
-function mostrarErroAoEviarParaSErvidor(resposta){
+function mostrarErroAoEviarParaSErvidor(resposta) {
     console.log("Houve um erro ao enviar para o servidor: ", resposta)
 }
 
 
+function verificarIdsSalvos() {
+    arrayDeIdsString = localStorage.getItem("idsSalvos")
+    if (arrayDeIdsString == null) {
+        arrayDeIdsString = "[]";
+    }
+    arrayDeIds = JSON.parse(arrayDeIdsString)
 
+    if (arrayDeIds.length > 0) {
+        document.querySelector("#tela1_1 .menu-criar-Quizz").classList.add("esconder");
+        buscarQuizzComOIdSalvo();
+    } else {
+        document.querySelector("#tela1_2").classList.add("esconder")
+    }
 
+    console.log(arrayDeIds, arrayDeIdsString)
 
-
-let arrayDeIdsString = localStorage.getItem("idsSalvos")
-if(arrayDeIdsString == null){
-    arrayDeIdsString = "[]";
 }
-let arrayDeIds = JSON.parse(arrayDeIdsString)
-// if(arrayDeIds == null){
-//     arrayDeIds = [];
-// }
 
-if(arrayDeIds.length > 0){
-    document.querySelector("#tela1_1 .menu-criar-Quizz").classList.add("esconder");
-}else{
-    document.querySelector("#tela1_2").classList.add("esconder")
-}
-
-console.log(arrayDeIds, arrayDeIdsString)
 
 
 // ESTA FUNCAO PODE SER OTIMIZADA, ESTA ASSIM POR CONTA DE BUGS QUE DERAM, OTIMIZAREI ELA NO FINAL SE DER TEMPO
-function salvarInformacoesNoNavegadorDoUsuario(recebidoApenasID){//estou recebendo apenas o id numero
-    let variavelQueReceboApenasOID  = 0;
+function salvarInformacoesNoNavegadorDoUsuario(recebidoApenasID) {//estou recebendo apenas o id numero
+    let variavelQueReceboApenasOID = 0;
     variavelQueReceboApenasOID = recebidoApenasID
     console.log("Este eh o id que está vindo para salvarInformacoesNoNavegadorDoUsuario: ", variavelQueReceboApenasOID)
     arrayDeIds.push(variavelQueReceboApenasOID)
-    console.log("Aqui não eh string ainda: ", arrayDeIds)
 
     arrayDeIdsString = JSON.stringify(arrayDeIds)
-    
-    console.log("Aqui ja eh string:", arrayDeIdsString) //converto o numero para uma string
+
     localStorage.setItem("idsSalvos", arrayDeIdsString); //salvo no navegador do usuario
 
     //O proximo passo eh pegar isso quando usar o axios.get
+}
+
+function buscarQuizzComOIdSalvo(){
+    for(let i=0; i<arrayDeIds.length; i++){
+        let promessaDeBuscaDeQuizzPeloIdsDoUsuario = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${arrayDeIds[i]}`)
+        promessaDeBuscaDeQuizzPeloIdsDoUsuario.then(renderizarQuizzesDoUsuario)
+    }
+}
+
+function renderizarQuizzesDoUsuario(respostaComOQuizz){
+    console.log(respostaComOQuizz)
+    let lugarParaRenderizarQiuzz = document.querySelector("#tela1_2")
+
+    lugarParaRenderizarQiuzz.innerHTML += `
+    <div class="quizz-do-usuario" id="${respostaComOQuizz.data.id}" onclick="irParaQuizz(this)">
+            <img src="${respostaComOQuizz.data.image}" alt="">
+            <div class="backgound-gradiente"></div>
+            <p>${respostaComOQuizz.data.title}</p>
+        </div>
+    `
+
 }
